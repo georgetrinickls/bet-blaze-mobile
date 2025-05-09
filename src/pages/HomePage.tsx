@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,11 +12,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useCarousel } from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState("1X2");
-  const [api, setApi] = useState<ReturnType<typeof useCarousel>[1]>();
+  const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
