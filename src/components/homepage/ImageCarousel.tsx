@@ -5,14 +5,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const ImageCarousel = () => {
   const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
-  const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
 
   // Carousel images
   const carouselImages = [
@@ -24,15 +20,6 @@ const ImageCarousel = () => {
   // Setup auto-rotation for carousel every 10 seconds
   useEffect(() => {
     if (!api) return;
-
-    // Set initial count
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    // Update current slide when it changes
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
 
     // Auto-rotate every 10 seconds
     const autoRotateInterval = setInterval(() => {
@@ -52,9 +39,9 @@ const ImageCarousel = () => {
         loop: true,
       }}
     >
-      <CarouselContent>
+      <CarouselContent className="-ml-2">
         {carouselImages.map((image, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem key={index} className="pl-2">
             <div className="overflow-hidden rounded-xl">
               <img
                 src={image}
@@ -65,13 +52,6 @@ const ImageCarousel = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex items-center justify-center gap-2 mt-2">
-        <CarouselPrevious className="static relative transform-none h-8 w-8" />
-        <span className="text-xs text-muted-foreground">
-          {current} / {count}
-        </span>
-        <CarouselNext className="static relative transform-none h-8 w-8" />
-      </div>
     </Carousel>
   );
 };
