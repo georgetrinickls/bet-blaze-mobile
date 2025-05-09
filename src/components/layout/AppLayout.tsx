@@ -29,7 +29,7 @@ export function AppLayout({ children, title }: AppLayoutProps) {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <header className="sticky top-0 z-40 bg-virginRedNew text-white shadow-md h-[148px]">
+      <header className="sticky top-0 z-40 bg-virginRedNew text-white shadow-md h-[136px]">
         <div className="h-2/3 px-4 flex items-center justify-between">
           <Logo className="h-8 w-auto" />
           <div className="bg-white rounded-full px-4 py-1 flex items-center">
