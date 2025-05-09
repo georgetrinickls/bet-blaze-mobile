@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GripHorizontal, Clock, Wallet } from "lucide-react";
+import { MatchCard } from "@/components/football/MatchCard";
 
 interface BetProps {
   id: string;
@@ -135,7 +136,18 @@ const MyBetsPage = () => {
 
             <h2 className="text-lg font-bold mt-6 mb-3">Football Fixtures</h2>
             {fixtures.map((fixture, index) => (
-              <MatchCard key={index} fixture={fixture} />
+              <MatchCard
+                key={index}
+                homeTeam={fixture.homeTeam}
+                awayTeam={fixture.awayTeam}
+                time={fixture.time}
+                date={fixture.date}
+                broadcast={fixture.broadcast}
+                homeOdds={fixture.homeOdds}
+                drawOdds={fixture.drawOdds}
+                awayOdds={fixture.awayOdds}
+                onViewMore={() => console.log(`View more for ${fixture.homeTeam} vs ${fixture.awayTeam}`)}
+              />
             ))}
           </TabsContent>
 
@@ -227,50 +239,6 @@ const BetCard = ({ bet }: { bet: BetProps }) => {
               Cash Out £18.50
             </Button>
           )}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
-const MatchCard = ({ fixture }: { fixture: MatchProps }) => {
-  return (
-    <Card className="mb-3">
-      <CardContent className="p-3">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center space-x-2">
-            <GripHorizontal className="h-4 w-4 text-virginRed" />
-            <div className="flex items-center space-x-1">
-              <Clock className="h-3 w-3 text-gray-500" />
-              <span className="text-xs text-gray-500">{fixture.time}</span>
-            </div>
-          </div>
-          <div className="text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-600">
-            {fixture.broadcast}
-          </div>
-        </div>
-        
-        <p className="text-sm font-medium mb-3">{fixture.homeTeam} vs {fixture.awayTeam}</p>
-        
-        <div className="grid grid-cols-3 gap-2">
-          <Button variant="outline" size="sm" className="text-xs h-9">
-            <div className="flex flex-col">
-              <span>Home</span>
-              <span className="font-bold">{fixture.homeOdds}</span>
-            </div>
-          </Button>
-          <Button variant="outline" size="sm" className="text-xs h-9">
-            <div className="flex flex-col">
-              <span>Draw</span>
-              <span className="font-bold">{fixture.drawOdds}</span>
-            </div>
-          </Button>
-          <Button variant="outline" size="sm" className="text-xs h-9">
-            <div className="flex flex-col">
-              <span>Away</span>
-              <span className="font-bold">{fixture.awayOdds}</span>
-            </div>
-          </Button>
         </div>
       </CardContent>
     </Card>
