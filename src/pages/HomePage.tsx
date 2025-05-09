@@ -1,10 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { MatchCard } from "@/components/football/MatchCard";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Badge } from "@/components/ui/badge";
 
 const HomePage = () => {
+  const [activeFilter, setActiveFilter] = useState("1X2");
+
   // Sample fixture data for the homepage
   const fixtures = [
     {
@@ -29,6 +33,18 @@ const HomePage = () => {
     },
   ];
 
+  // Filter options
+  const filterOptions = [
+    "1X2",
+    "BTTS",
+    "Over/Under 1.5 Goals",
+    "Over/Under 2.5 Goals"
+  ];
+
+  const handleFilterChange = (value: string) => {
+    if (value) setActiveFilter(value);
+  };
+
   return (
     <AppLayout title="Home">
       <div className="p-4 space-y-4">
@@ -46,6 +62,31 @@ const HomePage = () => {
         </div>
         
         <h2 className="font-bold text-lg pt-2">Today's Matches</h2>
+        
+        <div className="overflow-x-auto pb-2 no-scrollbar">
+          <ToggleGroup 
+            type="single" 
+            value={activeFilter} 
+            onValueChange={handleFilterChange}
+            className="flex space-x-2"
+          >
+            {filterOptions.map((option) => (
+              <ToggleGroupItem
+                key={option}
+                value={option}
+                className="whitespace-nowrap rounded-full px-3 py-1 text-sm"
+                variant="outline"
+              >
+                {activeFilter === option ? (
+                  <Badge variant="default" className="bg-virginRed">
+                    {option}
+                  </Badge>
+                ) : option}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
+        
         <div className="mb-4">
           {fixtures.map((fixture, index) => (
             <MatchCard
