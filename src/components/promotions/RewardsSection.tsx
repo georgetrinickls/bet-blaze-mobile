@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Gift } from "lucide-react";
+import { ChevronRight, Gift, Info } from "lucide-react";
 import { RewardsSectionProps } from "./types";
 import { RewardsCarousel } from "./RewardsCarousel";
 import { RewardModal } from "./RewardModal";

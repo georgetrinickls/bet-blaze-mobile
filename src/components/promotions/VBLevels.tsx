@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { LevelTracker } from "./LevelTracker";
 import { MissionsSection } from "./MissionsSection";
 import { RewardsSection } from "./RewardsSection";
+import { LevelsFaqSection } from "./LevelsFaqSection";
 import {
   USER_LEVEL,
   USER_LEVEL_NAME,
@@ -35,6 +36,9 @@ export const VBLevels = () => {
         xpToNextLevel={XP_TO_NEXT_LEVEL}
         xpProgress={XP_PROGRESS}
       />
+
+      {/* FAQ Section */}
+      <LevelsFaqSection />
 
       {/* Current Missions Section */}
       <MissionsSection missions={MISSIONS} />
