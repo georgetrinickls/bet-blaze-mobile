@@ -110,14 +110,6 @@ const MyBetsPage = () => {
 
   return (
     <AppLayout title="My Bets">
-      <div className="bg-virginRed py-3 px-4 flex justify-between items-center">
-        <div></div>
-        <div className="bg-white rounded-full px-4 py-1 flex items-center">
-          <Wallet className="h-4 w-4 text-virginRed mr-1" />
-          <span className="text-virginRed font-bold">£125.99</span>
-        </div>
-      </div>
-
       <div className="p-4">
         <Tabs defaultValue="open" className="w-full">
           <TabsList className="grid grid-cols-4 mb-4">

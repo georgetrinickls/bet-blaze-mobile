@@ -11,6 +11,7 @@ import BetSlipPage from "./pages/BetSlipPage";
 import CasinoPage from "./pages/CasinoPage";
 import LiveCasinoPage from "./pages/LiveCasinoPage";
 import MyBetsPage from "./pages/MyBetsPage";
+import PromotionsPage from "./pages/PromotionsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +29,7 @@ const App = () => (
             <Route path="/bet-slip" element={<BetSlipPage />} />
             <Route path="/casino" element={<CasinoPage />} />
             <Route path="/live-casino" element={<LiveCasinoPage />} />
-            <Route path="/promotions" element={<MyBetsPage />} /> {/* Temporary using MyBets as a placeholder for Promotions */}
+            <Route path="/promotions" element={<PromotionsPage />} />
             <Route path="/my-bets" element={<MyBetsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
