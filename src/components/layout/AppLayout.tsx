@@ -38,13 +38,13 @@ export function AppLayout({ children, title }: AppLayoutProps) {
           </div>
         </div>
         
-        {/* Navigation tabs */}
-        <div className="flex px-4 h-1/3">
+        {/* Navigation tabs - updated to stretch full width */}
+        <div className="flex h-1/3 w-full">
           {tabs.map((tab) => (
             <Link
               key={tab.name}
               to={tab.path}
-              className={`relative mr-6 flex items-center ${isActive(tab.path) ? "font-bold" : ""}`}
+              className={`flex-1 flex items-center justify-center relative ${isActive(tab.path) ? "font-bold" : ""}`}
             >
               {tab.name}
               {isActive(tab.path) && (
