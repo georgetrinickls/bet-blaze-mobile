@@ -28,25 +28,26 @@ export const MatchCard: React.FC<MatchProps> = ({
   awayOdds,
   onViewMore,
 }) => {
-  const { addSelectionToBetSlip, isSelectionInBetslip } = useBetSlip();
+  const { toggleSelectionInBetSlip, isSelectionInBetslip } = useBetSlip();
 
   const handleOddsClick = (type: string, odds: string) => {
+    const selectionId = `${homeTeam} vs ${awayTeam} - ${type} - ${odds}`;
     const selectionText = type === "home" 
       ? `${homeTeam} to Win @ ${odds}` 
       : type === "draw" 
         ? `${homeTeam} vs ${awayTeam} to Draw @ ${odds}` 
         : `${awayTeam} to Win @ ${odds}`;
     
-    addSelectionToBetSlip(selectionText);
+    toggleSelectionInBetSlip(selectionId, selectionText);
   };
 
-  const homeSelectionKey = `${homeTeam} to Win @ ${homeOdds}`;
-  const drawSelectionKey = `${homeTeam} vs ${awayTeam} to Draw @ ${drawOdds}`;
-  const awaySelectionKey = `${awayTeam} to Win @ ${awayOdds}`;
+  const homeSelectionId = `${homeTeam} vs ${awayTeam} - home - ${homeOdds}`;
+  const drawSelectionId = `${homeTeam} vs ${awayTeam} - draw - ${drawOdds}`;
+  const awaySelectionId = `${homeTeam} vs ${awayTeam} - away - ${awayOdds}`;
 
-  const isHomeSelected = isSelectionInBetslip(homeSelectionKey);
-  const isDrawSelected = isSelectionInBetslip(drawSelectionKey);
-  const isAwaySelected = isSelectionInBetslip(awaySelectionKey);
+  const isHomeSelected = isSelectionInBetslip(homeSelectionId);
+  const isDrawSelected = isSelectionInBetslip(drawSelectionId);
+  const isAwaySelected = isSelectionInBetslip(awaySelectionId);
 
   return (
     <Card className="mb-3">

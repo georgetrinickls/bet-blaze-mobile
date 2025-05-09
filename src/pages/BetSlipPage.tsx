@@ -27,10 +27,10 @@ const BetSlipPage = () => {
               <CardContent className="p-4 space-y-3">
                 {betslip.map((selection, index) => (
                   <div 
-                    key={index} 
+                    key={selection.id} 
                     className="p-3 bg-gray-50 rounded-md border border-gray-100"
                   >
-                    <p className="text-sm">{selection}</p>
+                    <p className="text-sm">{selection.display}</p>
                   </div>
                 ))}
                 <Button 
