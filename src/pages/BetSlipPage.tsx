@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useBetSlip } from "@/context/BetSlipContext";
 
 const BetSlipPage = () => {
-  const { betCount, clearBetSlip } = useBetSlip();
+  const { betCount, betslip, clearBetSlip } = useBetSlip();
 
   return (
     <AppLayout title="Bet Slip">
@@ -24,12 +24,17 @@ const BetSlipPage = () => {
               </Button>
             </div>
             <Card>
-              <CardContent className="p-4">
-                <p className="text-center py-4 text-gray-600">
-                  You have {betCount} selection{betCount !== 1 ? 's' : ''} in your betslip
-                </p>
+              <CardContent className="p-4 space-y-3">
+                {betslip.map((selection, index) => (
+                  <div 
+                    key={index} 
+                    className="p-3 bg-gray-50 rounded-md border border-gray-100"
+                  >
+                    <p className="text-sm">{selection}</p>
+                  </div>
+                ))}
                 <Button 
-                  className="w-full bg-virginRed hover:bg-virginRed/90" 
+                  className="w-full mt-4 bg-virginRed hover:bg-virginRed/90" 
                 >
                   Place Bet
                 </Button>

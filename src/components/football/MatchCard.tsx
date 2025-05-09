@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GripHorizontal, Clock, ChevronRight } from "lucide-react";
+import { useBetSlip } from "@/context/BetSlipContext";
 
 interface MatchProps {
   homeTeam: string;
@@ -27,6 +28,26 @@ export const MatchCard: React.FC<MatchProps> = ({
   awayOdds,
   onViewMore,
 }) => {
+  const { addSelectionToBetSlip, isSelectionInBetslip } = useBetSlip();
+
+  const handleOddsClick = (type: string, odds: string) => {
+    const selectionText = type === "home" 
+      ? `${homeTeam} to Win @ ${odds}` 
+      : type === "draw" 
+        ? `${homeTeam} vs ${awayTeam} to Draw @ ${odds}` 
+        : `${awayTeam} to Win @ ${odds}`;
+    
+    addSelectionToBetSlip(selectionText);
+  };
+
+  const homeSelectionKey = `${homeTeam} to Win @ ${homeOdds}`;
+  const drawSelectionKey = `${homeTeam} vs ${awayTeam} to Draw @ ${drawOdds}`;
+  const awaySelectionKey = `${awayTeam} to Win @ ${awayOdds}`;
+
+  const isHomeSelected = isSelectionInBetslip(homeSelectionKey);
+  const isDrawSelected = isSelectionInBetslip(drawSelectionKey);
+  const isAwaySelected = isSelectionInBetslip(awaySelectionKey);
+
   return (
     <Card className="mb-3">
       <CardContent className="p-3">
@@ -59,19 +80,34 @@ export const MatchCard: React.FC<MatchProps> = ({
         </div>
         
         <div className="grid grid-cols-3 gap-2">
-          <Button variant="outline" size="sm" className="text-xs h-9">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className={`text-xs h-9 ${isHomeSelected ? 'bg-virginRed text-white hover:bg-virginRed/90 border-virginRed' : ''}`}
+            onClick={() => handleOddsClick("home", homeOdds)}
+          >
             <div className="flex flex-col">
               <span>Home</span>
               <span className="font-bold">{homeOdds}</span>
             </div>
           </Button>
-          <Button variant="outline" size="sm" className="text-xs h-9">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className={`text-xs h-9 ${isDrawSelected ? 'bg-virginRed text-white hover:bg-virginRed/90 border-virginRed' : ''}`}
+            onClick={() => handleOddsClick("draw", drawOdds)}
+          >
             <div className="flex flex-col">
               <span>Draw</span>
               <span className="font-bold">{drawOdds}</span>
             </div>
           </Button>
-          <Button variant="outline" size="sm" className="text-xs h-9">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className={`text-xs h-9 ${isAwaySelected ? 'bg-virginRed text-white hover:bg-virginRed/90 border-virginRed' : ''}`}
+            onClick={() => handleOddsClick("away", awayOdds)}
+          >
             <div className="flex flex-col">
               <span>Away</span>
               <span className="font-bold">{awayOdds}</span>
