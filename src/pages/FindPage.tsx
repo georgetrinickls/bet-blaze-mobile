@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Circle, Football, Cricket, Racing, Tennis, Greyhound } from "lucide-react";
+import { Search, Circle, Activity, PenTool, TimerOff, Swords } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const FindPage = () => {
@@ -11,22 +11,22 @@ const FindPage = () => {
   
   // Featured sports
   const featuredSports = [
-    { name: "Football", icon: Football },
-    { name: "Horse Racing", icon: Racing },
-    { name: "Tennis", icon: Tennis },
-    { name: "Greyhounds", icon: Greyhound },
-    { name: "Virtual Sports", icon: Football },
-    { name: "E-Soccer", icon: Football },
+    { name: "Football", icon: Swords },
+    { name: "Horse Racing", icon: TimerOff },
+    { name: "Tennis", icon: Circle },
+    { name: "Greyhounds", icon: PenTool },
+    { name: "Virtual Sports", icon: Swords },
+    { name: "E-Soccer", icon: Swords },
   ];
   
   // Top sports with icons
   const topSports = [
     { name: "In-play", icon: Circle, badge: "76", badgeColor: "bg-virginRed" },
-    { name: "UK", icon: Football, badge: "" },
-    { name: "Elite Euro", icon: Football, badge: "" },
-    { name: "Cricket", icon: Cricket, badge: "" },
-    { name: "Racing Specials", icon: Racing, badge: "" },
-    { name: "ATP & WTA", icon: Tennis, badge: "" },
+    { name: "UK", icon: Swords, badge: "" },
+    { name: "Elite Euro", icon: Swords, badge: "" },
+    { name: "Cricket", icon: Swords, badge: "" },
+    { name: "Racing Specials", icon: TimerOff, badge: "" },
+    { name: "ATP & WTA", icon: Circle, badge: "" },
   ];
   
   const sportsList = [
