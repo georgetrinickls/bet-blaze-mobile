@@ -3,7 +3,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Football, Clock, Wallet } from "lucide-react";
+import { GripHorizontal, Clock, Wallet } from "lucide-react";
 
 interface BetProps {
   id: string;
@@ -239,7 +239,7 @@ const MatchCard = ({ fixture }: { fixture: MatchProps }) => {
       <CardContent className="p-3">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2">
-            <Football className="h-4 w-4 text-virginRed" />
+            <GripHorizontal className="h-4 w-4 text-virginRed" />
             <div className="flex items-center space-x-1">
               <Clock className="h-3 w-3 text-gray-500" />
               <span className="text-xs text-gray-500">{fixture.time}</span>
