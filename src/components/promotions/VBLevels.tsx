@@ -1,15 +1,17 @@
-
 import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Gift, Zap, Trophy, Clock } from "lucide-react";
+import { ChevronRight, Gift, Zap, Trophy, Clock, Star } from "lucide-react";
 
 export const VBLevels = () => {
   // Mock data for the VB Levels component
   const userLevel = 3;
+  const userLevelName = "Expert";
   const totalLevels = 5;
+  const levelNames = ["Rookie", "Pro", "Expert", "Elite", "Legend"];
   const currentXP = 650;
   const nextLevelXP = 1000;
+  const xpToNextLevel = nextLevelXP - currentXP;
   const xpProgress = (currentXP / nextLevelXP) * 100;
 
   // Mock missions data
@@ -71,21 +73,63 @@ export const VBLevels = () => {
         <p className="text-white/80">Complete missions. Earn XP. Get rewards.</p>
       </div>
 
-      {/* Level Progress Section */}
+      {/* Level Progress Section - Enhanced with horizontal level tracker */}
       <div className="p-5 border-b border-gray-800">
         <div className="flex justify-between items-center mb-2">
-          <span className="font-bold">Level {userLevel}</span>
+          <div className="flex items-center">
+            <Star className="h-5 w-5 text-virginRedNew mr-2" />
+            <span className="font-bold">Level {userLevel}: {userLevelName}</span>
+          </div>
           <span className="text-xs text-white/70">
             {currentXP} / {nextLevelXP} XP
           </span>
         </div>
         <Progress value={xpProgress} className="h-2 bg-gray-700" />
-        <div className="flex justify-between mt-2">
-          <span className="text-xs text-white/70">Current Level</span>
-          <span className="text-xs text-white/70">Level {userLevel + 1}</span>
+        
+        {/* Horizontal Level Tracker */}
+        <div className="mt-6 mb-2">
+          <div className="flex justify-between items-center mb-1">
+            {levelNames.map((name, index) => (
+              <div 
+                key={index} 
+                className={`text-xs font-medium ${index + 1 <= userLevel ? 'text-virginRedNew' : 'text-gray-400'}`}
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+          <div className="relative">
+            <div className="h-1 bg-gray-700 rounded-full">
+              <div 
+                className="absolute top-0 left-0 h-1 bg-virginRedNew rounded-full" 
+                style={{ width: `${(userLevel - 1) / (levelNames.length - 1) * 100}%` }}
+              />
+            </div>
+
+            {/* Level Milestone Markers */}
+            <div className="flex justify-between absolute w-full top-1/2 transform -translate-y-1/2">
+              {levelNames.map((_, index) => (
+                <div 
+                  key={index}
+                  className={`w-4 h-4 rounded-full border-2 border-gray-900 transform -translate-x-1/2 ${
+                    index + 1 < userLevel ? 'bg-virginRedNew' : 
+                    index + 1 === userLevel ? 'bg-virginRedNew ring-2 ring-virginRedNew/50' : 
+                    'bg-gray-700'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
         
-        {/* Level Indicator */}
+        {/* Motivational Message */}
+        <div className="mt-4 p-2 bg-virginRedNew/10 rounded-lg text-center">
+          <p className="text-sm">
+            Only <span className="font-bold text-virginRedNew">{xpToNextLevel} XP</span> to go — next stop: <span className="font-bold">{levelNames[userLevel]} Level!</span>
+          </p>
+        </div>
+        
+        {/* Level Indicator - Keeping original design as backup */}
         <div className="flex justify-between mt-4">
           {Array.from({ length: totalLevels }).map((_, index) => (
             <div key={index} className="flex flex-col items-center">
