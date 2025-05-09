@@ -10,7 +10,7 @@ export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
     <div className="p-5">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold flex items-center">
-          <Gift className="h-5 w-5 mr-2 text-virginRedNew" />
+          <Gift className="h-5 w-5 mr-2 text-purple-500" />
           Your Rewards
         </h3>
         <Button variant="link" className="text-white p-0 flex items-center">

@@ -74,7 +74,7 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
                   <CardContent className="p-0">
                     <div className="p-4 flex flex-col h-full">
                       <div className="flex justify-between items-start mb-2">
-                        <Badge variant={reward.unlocked ? "default" : "outline"} className="bg-virginRedNew mb-2">
+                        <Badge variant={reward.unlocked ? "default" : "outline"} className="bg-purple-500 mb-2">
                           {reward.rewardType}
                         </Badge>
                         {reward.nextLevel && (
@@ -97,7 +97,7 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
 
                       <div className="mt-auto">
                         {reward.unlocked && !reward.claimed && (
-                          <Button className="w-full bg-virginRedNew hover:bg-red-700 gap-2">
+                          <Button className="w-full bg-purple-500 hover:bg-purple-700 gap-2">
                             <Check className="h-4 w-4" /> Claim Reward
                           </Button>
                         )}
