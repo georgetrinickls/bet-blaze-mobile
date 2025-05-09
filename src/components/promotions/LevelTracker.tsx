@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Star } from "lucide-react";
 import { LevelTrackerProps } from "./types";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const LevelTracker = ({
   userLevel,
@@ -12,12 +14,14 @@ export const LevelTracker = ({
   xpToNextLevel,
   xpProgress,
 }: LevelTrackerProps) => {
+  const isMobile = useIsMobile();
+  
   return (
-    <div className="p-5 border-b border-gray-800">
+    <div className="p-4 sm:p-5 border-b border-gray-800">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <Star className="h-5 w-5 text-virginRedNew mr-2" />
-          <span className="font-bold">Level {userLevel}: {userLevelName}</span>
+          <span className="font-bold text-sm sm:text-base">Level {userLevel}: {userLevelName}</span>
         </div>
         <span className="text-xs text-white/70">
           {currentXP} / {nextLevelXP} XP
@@ -31,9 +35,9 @@ export const LevelTracker = ({
           {levelNames.map((name, index) => (
             <div 
               key={index} 
-              className={`text-xs font-medium ${index + 1 <= userLevel ? 'text-virginRedNew' : 'text-gray-400'}`}
+              className={`text-[10px] sm:text-xs font-medium ${index + 1 <= userLevel ? 'text-virginRedNew' : 'text-gray-400'}`}
             >
-              {name}
+              {isMobile ? (index === 0 || index === levelNames.length - 1 ? name : '') : name}
             </div>
           ))}
         </div>
@@ -50,7 +54,7 @@ export const LevelTracker = ({
             {levelNames.map((_, index) => (
               <div 
                 key={index}
-                className={`w-4 h-4 rounded-full border-2 border-gray-900 transform -translate-x-1/2 ${
+                className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 border-gray-900 transform -translate-x-1/2 ${
                   index + 1 < userLevel ? 'bg-virginRedNew' : 
                   index + 1 === userLevel ? 'bg-virginRedNew ring-2 ring-virginRedNew/50' : 
                   'bg-gray-700'
@@ -63,13 +67,13 @@ export const LevelTracker = ({
       
       {/* Motivational Message */}
       <div className="mt-4 p-2 bg-virginRedNew/10 rounded-lg text-center">
-        <p className="text-sm">
+        <p className="text-xs sm:text-sm">
           Only <span className="font-bold text-virginRedNew">{xpToNextLevel} XP</span> to go — next stop: <span className="font-bold">{levelNames[userLevel]} Level!</span>
         </p>
       </div>
       
-      {/* Level Indicator - Keeping original design as backup */}
-      <div className="flex justify-between mt-4">
+      {/* Level Indicator - Hiding on mobile for cleaner UI */}
+      <div className="hidden sm:flex justify-between mt-4">
         {Array.from({ length: levelNames.length }).map((_, index) => (
           <div key={index} className="flex flex-col items-center">
             <div 

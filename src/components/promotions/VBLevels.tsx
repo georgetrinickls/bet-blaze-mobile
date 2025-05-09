@@ -16,14 +16,17 @@ import {
   MISSIONS,
   REWARDS
 } from "./constants";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const VBLevels = () => {
+  const isMobile = useIsMobile();
+
   return (
     <div className="bg-gray-900 text-white rounded-xl">
       {/* Header Section */}
-      <div className="bg-virginRedNew rounded-t-xl p-5">
-        <h2 className="text-2xl font-bold mb-2">VB Levels</h2>
-        <p className="text-white/80">Complete missions. Earn XP. Get rewards.</p>
+      <div className="bg-virginRedNew rounded-t-xl p-4 sm:p-5">
+        <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">VB Levels</h2>
+        <p className="text-sm sm:text-base text-white/80">Complete missions. Earn XP. Get rewards.</p>
       </div>
 
       {/* Level Progress Section */}
@@ -47,8 +50,8 @@ export const VBLevels = () => {
       <RewardsSection rewards={REWARDS} />
 
       {/* Call to Action */}
-      <div className="p-5 bg-virginRedNew/20 rounded-b-xl">
-        <Button className="w-full bg-white text-virginRedNew hover:bg-gray-100">
+      <div className="p-4 sm:p-5 bg-virginRedNew/20 rounded-b-xl">
+        <Button className="w-full bg-white text-virginRedNew hover:bg-gray-100 py-6 sm:py-2 text-base">
           View Your Level History
         </Button>
       </div>

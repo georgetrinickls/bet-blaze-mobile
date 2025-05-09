@@ -5,10 +5,12 @@ import { ChevronRight, Gift, Info } from "lucide-react";
 import { RewardsSectionProps } from "./types";
 import { RewardsCarousel } from "./RewardsCarousel";
 import { RewardModal } from "./RewardModal";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
   const [showRewardModal, setShowRewardModal] = useState(false);
   const [currentMilestone, setCurrentMilestone] = useState(false);
+  const isMobile = useIsMobile();
   
   // This would normally be triggered by an actual milestone completion
   // For demo purposes, we're adding a button to trigger it
@@ -24,13 +26,17 @@ export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-4 sm:p-5">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold flex items-center">
+        <h3 className="text-base sm:text-lg font-semibold flex items-center">
           <Gift className="h-5 w-5 mr-2 text-purple-500" />
           Your Rewards
         </h3>
-        <Button variant="link" className="text-white p-0 flex items-center">
+        <Button 
+          variant="link" 
+          className="text-white p-0 flex items-center" 
+          size={isMobile ? "sm" : "default"}
+        >
           View All <ChevronRight className="h-4 w-4 ml-1" />
         </Button>
       </div>
@@ -43,7 +49,7 @@ export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
           onClick={handleTestMilestone}
           variant="outline" 
           size="sm"
-          className="text-xs text-gray-400 hover:text-white border-gray-700"
+          className="text-xs text-gray-400 hover:text-white border-gray-700 h-10 w-full sm:w-auto"
         >
           Demo: Complete Milestone
         </Button>

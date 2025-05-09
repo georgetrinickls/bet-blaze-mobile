@@ -8,9 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Check, Clock, Ticket, Gift, Percent, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
   const [filter, setFilter] = useState<RewardFilterType>("all");
+  const isMobile = useIsMobile();
 
   // Filter rewards based on selected filter
   const filteredRewards = rewards.filter((reward) => {
@@ -38,17 +40,20 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <h3 className="text-lg font-semibold">Rewards Collection</h3>
         
-        <ToggleGroup type="single" value={filter} onValueChange={(value) => value && setFilter(value as RewardFilterType)}>
-          <ToggleGroupItem value="unlocked" aria-label="Show unlocked rewards">
+        <ToggleGroup type="single" value={filter} size={isMobile ? "sm" : "default"} 
+          onValueChange={(value) => value && setFilter(value as RewardFilterType)}
+          className="justify-center sm:justify-end"
+        >
+          <ToggleGroupItem value="unlocked" aria-label="Show unlocked rewards" className="text-xs sm:text-sm">
             Unlocked
           </ToggleGroupItem>
-          <ToggleGroupItem value="coming" aria-label="Show coming rewards">
+          <ToggleGroupItem value="coming" aria-label="Show coming rewards" className="text-xs sm:text-sm">
             Coming Up
           </ToggleGroupItem>
-          <ToggleGroupItem value="all" aria-label="Show all rewards">
+          <ToggleGroupItem value="all" aria-label="Show all rewards" className="text-xs sm:text-sm">
             All
           </ToggleGroupItem>
         </ToggleGroup>
@@ -64,9 +69,9 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
         >
           <CarouselContent>
             {filteredRewards.map((reward) => (
-              <CarouselItem key={reward.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
+              <CarouselItem key={reward.id} className="basis-full sm:basis-1/2 md:basis-1/3 pl-4">
                 <Card className={cn(
-                  "overflow-hidden border",
+                  "overflow-hidden border touch-manipulation active:bg-opacity-90 transition-colors",
                   reward.unlocked 
                     ? "bg-gray-800 border-gray-700" 
                     : "bg-gray-800/50 border-gray-800 opacity-80"
@@ -88,26 +93,26 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
                         <div className="p-2 rounded-full bg-gray-700/50">
                           {getRewardIcon(reward.rewardType)}
                         </div>
-                        <h4 className="font-semibold text-lg">{reward.title}</h4>
+                        <h4 className="font-semibold text-base sm:text-lg">{reward.title}</h4>
                       </div>
 
                       {reward.description && (
-                        <p className="text-sm text-gray-400 mb-4">{reward.description}</p>
+                        <p className="text-xs sm:text-sm text-gray-400 mb-4">{reward.description}</p>
                       )}
 
                       <div className="mt-auto">
                         {reward.unlocked && !reward.claimed && (
-                          <Button className="w-full bg-purple-500 hover:bg-purple-700 gap-2">
+                          <Button className="w-full bg-purple-500 hover:bg-purple-700 gap-2 py-5 sm:py-2">
                             <Check className="h-4 w-4" /> Claim Reward
                           </Button>
                         )}
                         {reward.unlocked && reward.claimed && (
-                          <Badge className="bg-green-600 w-full justify-center py-2">
+                          <Badge className="bg-green-600 w-full justify-center py-3 sm:py-2">
                             <Check className="h-4 w-4 mr-1" /> Claimed
                           </Badge>
                         )}
                         {!reward.unlocked && (
-                          <Button disabled variant="outline" className="w-full gap-2">
+                          <Button disabled variant="outline" className="w-full gap-2 py-5 sm:py-2">
                             <Clock className="h-4 w-4" /> Coming Soon
                           </Button>
                         )}
@@ -119,8 +124,8 @@ export const RewardsCarousel = ({ rewards }: RewardsCarouselProps) => {
             ))}
           </CarouselContent>
           <div className="flex items-center justify-end space-x-2 py-2">
-            <CarouselPrevious className="static transform-none bg-gray-800 hover:bg-gray-700" />
-            <CarouselNext className="static transform-none bg-gray-800 hover:bg-gray-700" />
+            <CarouselPrevious className="static transform-none bg-gray-800 hover:bg-gray-700 h-10 w-10" />
+            <CarouselNext className="static transform-none bg-gray-800 hover:bg-gray-700 h-10 w-10" />
           </div>
         </Carousel>
       ) : (

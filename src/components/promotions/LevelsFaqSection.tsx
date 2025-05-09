@@ -31,13 +31,13 @@ export const LevelsFaqSection: React.FC = () => {
   ];
 
   return (
-    <div className="px-5 pb-4">
+    <div className="px-4 sm:px-5 pb-4">
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
         className="w-full bg-purple-900/20 rounded-lg border border-purple-800/50"
       >
-        <CollapsibleTrigger className="flex items-center justify-between w-full p-4 text-left">
+        <CollapsibleTrigger className="flex items-center justify-between w-full p-3 sm:p-4 text-left min-h-[48px] touch-manipulation">
           <div className="flex items-center">
             <Info className="h-5 w-5 text-purple-400 mr-2" />
             <span className="font-medium text-white">VB Levels Info & FAQs</span>
@@ -49,7 +49,7 @@ export const LevelsFaqSection: React.FC = () => {
           )}
         </CollapsibleTrigger>
         
-        <CollapsibleContent className="px-4 pb-4 pt-0 space-y-2">
+        <CollapsibleContent className="px-3 sm:px-4 pb-4 pt-0 space-y-2">
           <p className="text-sm text-white/80 mb-3">
             Find answers to common questions about the VB Levels program below.
           </p>
@@ -57,7 +57,7 @@ export const LevelsFaqSection: React.FC = () => {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`faq-${index}`} className="border-purple-800/50">
-                <AccordionTrigger className="text-sm py-3 hover:no-underline hover:text-purple-300">
+                <AccordionTrigger className="text-sm py-3 hover:no-underline hover:text-purple-300 min-h-[44px] touch-manipulation">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-white/70 px-2">
