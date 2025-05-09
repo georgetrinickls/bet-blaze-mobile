@@ -1,14 +1,54 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { MatchCard } from "@/components/football/MatchCard";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Badge } from "@/components/ui/badge";
 import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useCarousel } from "embla-carousel-react";
 
 const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState("1X2");
+  const [api, setApi] = useState<ReturnType<typeof useCarousel>[1]>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  // Carousel images
+  const carouselImages = [
+    "https://cdn.virginbet.com/headlines/images/vb-3kroulette-1105.jpg",
+    "https://cdn.virginbet.com/headlines/images/vb-newweeklyaccaoffer.jpg",
+    "https://cdn.virginbet.com/headlines/images/vb-2up.png",
+  ];
+
+  // Setup auto-rotation for carousel every 10 seconds
+  useEffect(() => {
+    if (!api) return;
+
+    // Set initial count
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    // Update current slide when it changes
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+
+    // Auto-rotate every 10 seconds
+    const autoRotateInterval = setInterval(() => {
+      api.scrollNext();
+    }, 10000);
+
+    // Clean up interval on unmount
+    return () => clearInterval(autoRotateInterval);
+  }, [api]);
 
   // Sample fixture data for the homepage
   const fixtures = [
@@ -101,18 +141,36 @@ const HomePage = () => {
   return (
     <AppLayout title="Home">
       <div className="p-4 space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <Card>
-            <CardContent className="p-4 flex items-center justify-center h-32 bg-gradient-to-r from-virginRed/80 to-virginRed text-white">
-              <p className="text-lg font-bold">In-Play</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4 flex items-center justify-center h-32 bg-gradient-to-r from-gray-800 to-black text-white">
-              <p className="text-lg font-bold">Upcoming</p>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Image Carousel - replaces the in-play and upcoming boxes */}
+        <Carousel
+          setApi={setApi}
+          className="w-full"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {carouselImages.map((image, index) => (
+              <CarouselItem key={index}>
+                <div className="overflow-hidden rounded-xl">
+                  <img
+                    src={image}
+                    alt={`Promotion ${index + 1}`}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <CarouselPrevious className="static relative transform-none h-8 w-8" />
+            <span className="text-xs text-muted-foreground">
+              {current} / {count}
+            </span>
+            <CarouselNext className="static relative transform-none h-8 w-8" />
+          </div>
+        </Carousel>
         
         {/* Popular Bet Builder Card */}
         <BetBuilderCard 
