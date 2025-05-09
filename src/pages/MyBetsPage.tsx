@@ -4,6 +4,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Football, Clock, Cash } from "lucide-react";
 
 interface BetProps {
   id: string;
@@ -17,6 +18,17 @@ interface BetProps {
     event: string;
     odds: string;
   }[];
+}
+
+interface MatchProps {
+  homeTeam: string;
+  awayTeam: string;
+  time: string;
+  date: string;
+  broadcast: string;
+  homeOdds: string;
+  drawOdds: string;
+  awayOdds: string;
 }
 
 const MyBetsPage = () => {
@@ -73,33 +85,83 @@ const MyBetsPage = () => {
     },
   ];
 
+  const fixtures: MatchProps[] = [
+    {
+      homeTeam: "Bodø/Glimt",
+      awayTeam: "Tottenham",
+      time: "20:00",
+      date: "Today",
+      broadcast: "BT Sport",
+      homeOdds: "29/20",
+      drawOdds: "14/5",
+      awayOdds: "31/20",
+    },
+    {
+      homeTeam: "Man Utd",
+      awayTeam: "Athletic Bilbao",
+      time: "15:00",
+      date: "Tomorrow",
+      broadcast: "Sky Sports",
+      homeOdds: "10/11",
+      drawOdds: "5/2",
+      awayOdds: "14/5",
+    },
+  ];
+
   return (
     <AppLayout title="My Bets">
+      <div className="bg-virginRed py-3 px-4 flex justify-between items-center">
+        <div></div>
+        <div className="bg-white rounded-full px-4 py-1 flex items-center">
+          <Cash className="h-4 w-4 text-virginRed mr-1" />
+          <span className="text-virginRed font-bold">£125.99</span>
+        </div>
+      </div>
+
       <div className="p-4">
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid grid-cols-3 mb-4">
-            <TabsTrigger value="all">All</TabsTrigger>
+        <Tabs defaultValue="open" className="w-full">
+          <TabsList className="grid grid-cols-4 mb-4">
             <TabsTrigger value="open">Open</TabsTrigger>
-            <TabsTrigger value="settled">Settled</TabsTrigger>
+            <TabsTrigger value="cashout">Cash Out</TabsTrigger>
+            <TabsTrigger value="history">History</TabsTrigger>
+            <TabsTrigger value="bonuses">Bonuses</TabsTrigger>
           </TabsList>
-          <TabsContent value="all" className="mt-0 space-y-4">
-            {bets.map((bet) => (
-              <BetCard key={bet.id} bet={bet} />
+
+          <TabsContent value="open" className="mt-0 space-y-4">
+            <Card className="bg-gray-50 border border-gray-200">
+              <CardContent className="p-8 text-center">
+                <p className="text-gray-600 mb-3">You have no open bets. Check out the latest football fixtures below.</p>
+              </CardContent>
+            </Card>
+
+            <h2 className="text-lg font-bold mt-6 mb-3">Football Fixtures</h2>
+            {fixtures.map((fixture, index) => (
+              <MatchCard key={index} fixture={fixture} />
             ))}
           </TabsContent>
-          <TabsContent value="open" className="mt-0 space-y-4">
-            {bets
-              .filter((bet) => bet.status === "Open")
-              .map((bet) => (
-                <BetCard key={bet.id} bet={bet} />
-              ))}
+
+          <TabsContent value="cashout" className="mt-0 space-y-4">
+            <Card className="bg-gray-50 border border-gray-200">
+              <CardContent className="p-8 text-center">
+                <p className="text-gray-600">You have no cash out bets available.</p>
+              </CardContent>
+            </Card>
           </TabsContent>
-          <TabsContent value="settled" className="mt-0 space-y-4">
+
+          <TabsContent value="history" className="mt-0 space-y-4">
             {bets
               .filter((bet) => bet.status !== "Open")
               .map((bet) => (
                 <BetCard key={bet.id} bet={bet} />
               ))}
+          </TabsContent>
+
+          <TabsContent value="bonuses" className="mt-0 space-y-4">
+            <Card className="bg-gray-50 border border-gray-200">
+              <CardContent className="p-8 text-center">
+                <p className="text-gray-600">You have no active bonuses.</p>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
@@ -166,6 +228,50 @@ const BetCard = ({ bet }: { bet: BetProps }) => {
               Cash Out £18.50
             </Button>
           )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+const MatchCard = ({ fixture }: { fixture: MatchProps }) => {
+  return (
+    <Card className="mb-3">
+      <CardContent className="p-3">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center space-x-2">
+            <Football className="h-4 w-4 text-virginRed" />
+            <div className="flex items-center space-x-1">
+              <Clock className="h-3 w-3 text-gray-500" />
+              <span className="text-xs text-gray-500">{fixture.time}</span>
+            </div>
+          </div>
+          <div className="text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-600">
+            {fixture.broadcast}
+          </div>
+        </div>
+        
+        <p className="text-sm font-medium mb-3">{fixture.homeTeam} vs {fixture.awayTeam}</p>
+        
+        <div className="grid grid-cols-3 gap-2">
+          <Button variant="outline" size="sm" className="text-xs h-9">
+            <div className="flex flex-col">
+              <span>Home</span>
+              <span className="font-bold">{fixture.homeOdds}</span>
+            </div>
+          </Button>
+          <Button variant="outline" size="sm" className="text-xs h-9">
+            <div className="flex flex-col">
+              <span>Draw</span>
+              <span className="font-bold">{fixture.drawOdds}</span>
+            </div>
+          </Button>
+          <Button variant="outline" size="sm" className="text-xs h-9">
+            <div className="flex flex-col">
+              <span>Away</span>
+              <span className="font-bold">{fixture.awayOdds}</span>
+            </div>
+          </Button>
         </div>
       </CardContent>
     </Card>
