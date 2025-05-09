@@ -3,21 +3,42 @@ import React, { useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search } from "lucide-react";
+import { Search, Circle, Football, Cricket, Racing, Tennis, Greyhound } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const FindPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   
+  // Featured sports
+  const featuredSports = [
+    { name: "Football", icon: Football },
+    { name: "Horse Racing", icon: Racing },
+    { name: "Tennis", icon: Tennis },
+    { name: "Greyhounds", icon: Greyhound },
+    { name: "Virtual Sports", icon: Football },
+    { name: "E-Soccer", icon: Football },
+  ];
+  
+  // Top sports with icons
+  const topSports = [
+    { name: "In-play", icon: Circle, badge: "76", badgeColor: "bg-virginRed" },
+    { name: "UK", icon: Football, badge: "" },
+    { name: "Elite Euro", icon: Football, badge: "" },
+    { name: "Cricket", icon: Cricket, badge: "" },
+    { name: "Racing Specials", icon: Racing, badge: "" },
+    { name: "ATP & WTA", icon: Tennis, badge: "" },
+  ];
+  
   const sportsList = [
     "American Football", "Athletics", "Aussie Rules",
     "Baseball", "Basketball", "Boxing",
-    "Cricket", "Cycling", "Darts",
-    "Football", "Formula 1", "Gaelic Games",
-    "Golf", "Greyhounds", "Handball",
-    "Horse Racing", "Ice Hockey", "MMA/UFC",
+    "Cycling", "Darts",
+    "Formula 1", "Gaelic Games",
+    "Golf", "Handball",
+    "Ice Hockey", "MMA/UFC",
     "Motor Sports", "Olympics", "Politics",
     "Rugby League", "Rugby Union", "Snooker",
-    "Table Tennis", "Tennis", "Volleyball",
+    "Table Tennis", "Volleyball",
     "Winter Sports"
   ];
   
@@ -38,16 +59,57 @@ const FindPage = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 gap-2">
-          {filteredSports.map((sport) => (
-            <Card key={sport}>
-              <CardContent className="p-3 flex items-center justify-between">
-                <p className="text-sm">{sport}</p>
-                <p className="text-virginRed text-sm">▶</p>
+        {/* Top Sports Grid */}
+        <div className="grid grid-cols-3 gap-2">
+          {topSports.map((sport) => (
+            <Card key={sport.name} className="relative">
+              <CardContent className="p-4 flex flex-col items-center justify-center h-24">
+                <sport.icon className="h-6 w-6 mb-2 text-virginRed" />
+                <p className="text-sm font-medium text-center">{sport.name}</p>
+                {sport.badge && (
+                  <Badge className={`absolute top-2 right-2 ${sport.badgeColor}`}>
+                    {sport.badge}
+                  </Badge>
+                )}
               </CardContent>
             </Card>
           ))}
         </div>
+        
+        {/* Featured Section */}
+        <div className="mt-6">
+          <h2 className="font-bold text-lg mb-3">Featured</h2>
+          <div className="grid grid-cols-1 gap-2">
+            {featuredSports.map((sport) => (
+              <Card key={sport.name}>
+                <CardContent className="p-3 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <sport.icon className="h-5 w-5 mr-3 text-virginRed" />
+                    <p className="text-sm">{sport.name}</p>
+                  </div>
+                  <p className="text-virginRed text-sm">▶</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+        
+        {/* A-Z Sports List */}
+        {searchTerm && (
+          <div className="mt-4">
+            <h2 className="font-bold text-lg mb-2">All Sports</h2>
+            <div className="grid grid-cols-1 gap-2">
+              {filteredSports.map((sport) => (
+                <Card key={sport}>
+                  <CardContent className="p-3 flex items-center justify-between">
+                    <p className="text-sm">{sport}</p>
+                    <p className="text-virginRed text-sm">▶</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </AppLayout>
   );
