@@ -3,6 +3,8 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Plus } from "lucide-react";
+import { useBetSlip } from "@/context/BetSlipContext";
+import { toast } from "sonner";
 
 interface BetBuilderOption {
   category: string;
@@ -20,8 +22,28 @@ export const BetBuilderCard: React.FC<BetBuilderCardProps> = ({
   match,
   options,
   odds,
-  onAddToBetslip = () => console.log("Added to betslip"),
+  onAddToBetslip,
 }) => {
+  const { addToBetSlip } = useBetSlip();
+
+  const handleAddToBetslip = () => {
+    const betData = {
+      match,
+      options,
+      odds,
+      timestamp: new Date().toISOString()
+    };
+    
+    // Call the context method to update the bet count
+    addToBetSlip(betData);
+    
+    // Call the original onAddToBetslip if provided
+    if (onAddToBetslip) onAddToBetslip();
+    
+    // Show a toast notification
+    toast.success("Selection added to betslip");
+  };
+
   return (
     <Card className="mb-4 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-600 to-indigo-700 p-3 text-white">
@@ -52,7 +74,7 @@ export const BetBuilderCard: React.FC<BetBuilderCardProps> = ({
           </div>
           
           <Button 
-            onClick={onAddToBetslip}
+            onClick={handleAddToBetslip}
             className="bg-virginRed hover:bg-virginRed/90"
             size="sm"
           >

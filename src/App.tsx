@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BetSlipProvider } from "./context/BetSlipContext";
 import HomePage from "./pages/HomePage";
 import FindPage from "./pages/FindPage";
 import BetSlipPage from "./pages/BetSlipPage";
@@ -15,22 +16,24 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/find" element={<FindPage />} />
-          <Route path="/bet-slip" element={<BetSlipPage />} />
-          <Route path="/casino" element={<CasinoPage />} />
-          <Route path="/my-bets" element={<MyBetsPage />} />
-          {/* Redirect to My Bets by default */}
-          <Route path="/" element={<Navigate to="/my-bets" replace />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <BetSlipProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/find" element={<FindPage />} />
+            <Route path="/bet-slip" element={<BetSlipPage />} />
+            <Route path="/casino" element={<CasinoPage />} />
+            <Route path="/my-bets" element={<MyBetsPage />} />
+            {/* Redirect to My Bets by default */}
+            <Route path="/" element={<Navigate to="/my-bets" replace />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </BetSlipProvider>
   </QueryClientProvider>
 );
 

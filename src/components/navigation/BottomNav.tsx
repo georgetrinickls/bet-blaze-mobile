@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Home, Search, FileText, Diamond, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useBetSlip } from "@/context/BetSlipContext";
+import { Badge } from "@/components/ui/badge";
 
 export type TabItem = {
   name: string;
@@ -42,6 +44,7 @@ const TAB_ITEMS: TabItem[] = [
 export function BottomNav() {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { betCount } = useBetSlip();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg h-16">
@@ -51,18 +54,28 @@ export function BottomNav() {
             tab.path === "/" 
               ? currentPath === "/" 
               : currentPath.startsWith(tab.path);
+          
+          const isBetSlip = tab.path === "/bet-slip";
+          const showBadge = isBetSlip && betCount > 0;
 
           return (
             <Link
               key={tab.name}
               to={tab.path}
               className={cn(
-                "flex flex-col items-center justify-center transition-colors",
+                "flex flex-col items-center justify-center transition-colors relative",
                 isActive
                   ? "text-virginRed"
                   : "text-gray-600 hover:text-virginRed"
               )}
             >
+              {showBadge && (
+                <Badge 
+                  className="absolute -top-1 -right-1 bg-virginRed text-white text-xs min-w-5 h-5 flex items-center justify-center rounded-full p-0"
+                >
+                  {betCount}
+                </Badge>
+              )}
               <tab.icon
                 className={cn(
                   "h-5 w-5 mb-1",
