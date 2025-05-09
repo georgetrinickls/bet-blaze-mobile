@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MatchCard } from "@/components/football/MatchCard";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Badge } from "@/components/ui/badge";
+import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
 
 const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState("1X2");
@@ -45,6 +46,18 @@ const HomePage = () => {
     if (value) setActiveFilter(value);
   };
 
+  // Bet Builder data
+  const betBuilderData = {
+    match: "Man Utd - Athletic Bilbao",
+    options: [
+      { category: "Market", selection: "Manchester United Full Time" },
+      { category: "Both Teams to Score", selection: "Yes" },
+      { category: "Goalscorers", selection: "Fernandes, Bruno (Anytime)" },
+      { category: "Goalscorers", selection: "Sannadi, Maroan (Anytime)" }
+    ],
+    odds: "24/1"
+  };
+
   return (
     <AppLayout title="Home">
       <div className="p-4 space-y-4">
@@ -60,6 +73,14 @@ const HomePage = () => {
             </CardContent>
           </Card>
         </div>
+        
+        {/* Popular Bet Builder Card */}
+        <BetBuilderCard 
+          match={betBuilderData.match}
+          options={betBuilderData.options}
+          odds={betBuilderData.odds}
+          onAddToBetslip={() => console.log("Added to betslip:", betBuilderData)}
+        />
         
         <h2 className="font-bold text-lg pt-2">Today's Matches</h2>
         
