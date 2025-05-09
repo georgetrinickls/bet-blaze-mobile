@@ -34,17 +34,17 @@ export function AppLayout({ children, title }: AppLayoutProps) {
           <Logo className="h-8 w-auto" />
           <div className="bg-white rounded-full px-4 py-1 flex items-center">
             <Wallet className="h-4 w-4 text-virginRedNew mr-1" />
-            <span className="text-virginRedNew font-bold">£125.99</span>
+            <span className="text-virginRedNew font-bold text-sm">£125.99</span>
           </div>
         </div>
         
-        {/* Navigation tabs - updated to stretch full width */}
+        {/* Navigation tabs - updated to stretch full width with reduced font size */}
         <div className="flex h-1/3 w-full">
           {tabs.map((tab) => (
             <Link
               key={tab.name}
               to={tab.path}
-              className={`flex-1 flex items-center justify-center relative ${isActive(tab.path) ? "font-bold" : ""}`}
+              className={`flex-1 flex items-center justify-center relative text-sm ${isActive(tab.path) ? "font-bold" : ""}`}
             >
               {tab.name}
               {isActive(tab.path) && (
