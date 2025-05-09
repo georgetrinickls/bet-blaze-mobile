@@ -1,10 +1,9 @@
-
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Football, Clock, Cash } from "lucide-react";
+import { Football, Clock, Wallet } from "lucide-react";
 
 interface BetProps {
   id: string;
@@ -113,7 +112,7 @@ const MyBetsPage = () => {
       <div className="bg-virginRed py-3 px-4 flex justify-between items-center">
         <div></div>
         <div className="bg-white rounded-full px-4 py-1 flex items-center">
-          <Cash className="h-4 w-4 text-virginRed mr-1" />
+          <Wallet className="h-4 w-4 text-virginRed mr-1" />
           <span className="text-virginRed font-bold">£125.99</span>
         </div>
       </div>
