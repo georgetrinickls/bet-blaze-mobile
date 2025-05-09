@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import FindPage from "./pages/FindPage";
 import BetSlipPage from "./pages/BetSlipPage";
 import CasinoPage from "./pages/CasinoPage";
+import LiveCasinoPage from "./pages/LiveCasinoPage";
 import MyBetsPage from "./pages/MyBetsPage";
 import NotFound from "./pages/NotFound";
 
@@ -26,9 +27,9 @@ const App = () => (
             <Route path="/find" element={<FindPage />} />
             <Route path="/bet-slip" element={<BetSlipPage />} />
             <Route path="/casino" element={<CasinoPage />} />
+            <Route path="/live-casino" element={<LiveCasinoPage />} />
+            <Route path="/promotions" element={<MyBetsPage />} /> {/* Temporary using MyBets as a placeholder for Promotions */}
             <Route path="/my-bets" element={<MyBetsPage />} />
-            {/* Redirect to My Bets by default */}
-            <Route path="/" element={<Navigate to="/my-bets" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
