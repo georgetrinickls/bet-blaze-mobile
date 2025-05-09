@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Plus } from "lucide-react";
 import { useBetSlip } from "@/context/BetSlipContext";
-import { toast } from "sonner";
 
 interface BetBuilderOption {
   category: string;
@@ -39,9 +38,6 @@ export const BetBuilderCard: React.FC<BetBuilderCardProps> = ({
     
     // Call the original onAddToBetslip if provided
     if (onAddToBetslip) onAddToBetslip();
-    
-    // Show a toast notification
-    toast.success("Selection added to betslip");
   };
 
   return (
