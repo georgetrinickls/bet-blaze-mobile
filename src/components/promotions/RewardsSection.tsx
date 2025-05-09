@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Gift, Trophy, Clock } from "lucide-react";
+import { ChevronRight, Gift } from "lucide-react";
 import { RewardsSectionProps } from "./types";
+import { RewardsCarousel } from "./RewardsCarousel";
 
 export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
   return (
@@ -16,39 +18,7 @@ export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
         </Button>
       </div>
       
-      <div className="space-y-4">
-        {rewards.map((reward) => (
-          <div 
-            key={reward.id} 
-            className={`p-4 rounded-lg flex justify-between items-center
-            ${reward.unlocked ? 'bg-gray-800' : 'bg-gray-800/40'}`}
-          >
-            <div className="flex items-center">
-              {reward.unlocked ? (
-                <Trophy className="h-5 w-5 mr-3 text-virginRedNew" />
-              ) : (
-                <Clock className="h-5 w-5 mr-3 text-gray-500" />
-              )}
-              <div>
-                <h4 className={`font-semibold ${!reward.unlocked && 'text-gray-400'}`}>
-                  {reward.title}
-                </h4>
-                {reward.nextLevel && (
-                  <span className="text-xs text-gray-400">Unlock at Level 4</span>
-                )}
-              </div>
-            </div>
-            {reward.unlocked && !reward.claimed && (
-              <Button className="bg-virginRedNew hover:bg-red-700 text-white">
-                Claim
-              </Button>
-            )}
-            {reward.unlocked && reward.claimed && (
-              <span className="text-sm text-green-400">Claimed</span>
-            )}
-          </div>
-        ))}
-      </div>
+      <RewardsCarousel rewards={rewards} />
     </div>
   );
 };

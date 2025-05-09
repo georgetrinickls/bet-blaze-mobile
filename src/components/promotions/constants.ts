@@ -47,17 +47,52 @@ export const REWARDS: Reward[] = [
     title: "£5 Free Bet",
     unlocked: true,
     claimed: true,
+    rewardType: "Free Bet",
+    eligibility: "Level 1 required",
+    description: "Use on any sport market"
   },
   {
     id: 2,
     title: "50% Deposit Bonus",
     unlocked: true,
     claimed: false,
+    rewardType: "Bonus",
+    eligibility: "Level 2 required",
+    description: "Up to £50 on next deposit"
   },
   {
     id: 3,
     title: "VIP Casino Access",
     unlocked: false,
     nextLevel: true,
+    rewardType: "VIP Access",
+    eligibility: "Level 4 required",
+    description: "Exclusive games and bonuses"
   },
+  {
+    id: 4,
+    title: "Double Odds Boost",
+    unlocked: true,
+    claimed: false,
+    rewardType: "Odds Boost",
+    eligibility: "Level 3 required",
+    description: "Boost any bet slip 2x"
+  },
+  {
+    id: 5,
+    title: "£10 Casino Voucher",
+    unlocked: false,
+    nextLevel: true,
+    rewardType: "Voucher",
+    eligibility: "Level 4 required",
+    description: "Use on selected slots"
+  },
+  {
+    id: 6,
+    title: "Weekly Free Bet",
+    unlocked: false,
+    rewardType: "Free Bet",
+    eligibility: "Level 5 required",
+    description: "£5 free bet every week"
+  }
 ];

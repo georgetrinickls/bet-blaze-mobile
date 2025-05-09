@@ -15,6 +15,9 @@ export interface Reward {
   unlocked: boolean;
   claimed?: boolean;
   nextLevel?: boolean;
+  rewardType: string; // e.g. "Free Bet", "Odds Boost", "Voucher"
+  eligibility?: string; // e.g. "Level 4 required"
+  description?: string;
 }
 
 export interface LevelTrackerProps {
@@ -34,3 +37,9 @@ export interface MissionsSectionProps {
 export interface RewardsSectionProps {
   rewards: Reward[];
 }
+
+export interface RewardsCarouselProps {
+  rewards: Reward[];
+}
+
+export type RewardFilterType = 'unlocked' | 'coming' | 'all';
