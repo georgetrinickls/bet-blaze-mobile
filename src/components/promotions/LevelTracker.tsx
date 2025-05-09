@@ -1,16 +1,7 @@
 import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Star } from "lucide-react";
-
-interface LevelTrackerProps {
-  userLevel: number;
-  userLevelName: string;
-  levelNames: string[];
-  currentXP: number;
-  nextLevelXP: number;
-  xpToNextLevel: number;
-  xpProgress: number;
-}
+import { LevelTrackerProps } from "./types";
 
 export const LevelTracker = ({
   userLevel,

@@ -1,22 +1,8 @@
-
 import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Zap } from "lucide-react";
-
-interface Mission {
-  id: number;
-  title: string;
-  xpReward: number;
-  progress: number;
-  total: number;
-  type: string;
-  completed?: boolean;
-}
-
-interface MissionsSectionProps {
-  missions: Mission[];
-}
+import { MissionsSectionProps } from "./types";
 
 export const MissionsSection = ({ missions }: MissionsSectionProps) => {
   return (

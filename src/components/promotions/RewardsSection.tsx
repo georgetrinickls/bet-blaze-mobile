@@ -1,19 +1,7 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Gift, Trophy, Clock } from "lucide-react";
-
-interface Reward {
-  id: number;
-  title: string;
-  unlocked: boolean;
-  claimed?: boolean;
-  nextLevel?: boolean;
-}
-
-interface RewardsSectionProps {
-  rewards: Reward[];
-}
+import { RewardsSectionProps } from "./types";
 
 export const RewardsSection = ({ rewards }: RewardsSectionProps) => {
   return (

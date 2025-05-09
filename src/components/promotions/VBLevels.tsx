@@ -4,69 +4,19 @@ import { Button } from "@/components/ui/button";
 import { LevelTracker } from "./LevelTracker";
 import { MissionsSection } from "./MissionsSection";
 import { RewardsSection } from "./RewardsSection";
+import {
+  USER_LEVEL,
+  USER_LEVEL_NAME,
+  LEVEL_NAMES,
+  CURRENT_XP,
+  NEXT_LEVEL_XP,
+  XP_TO_NEXT_LEVEL,
+  XP_PROGRESS,
+  MISSIONS,
+  REWARDS
+} from "./constants";
 
 export const VBLevels = () => {
-  // Mock data for the VB Levels component
-  const userLevel = 3;
-  const userLevelName = "Expert";
-  const totalLevels = 5;
-  const levelNames = ["Rookie", "Pro", "Expert", "Elite", "Legend"];
-  const currentXP = 650;
-  const nextLevelXP = 1000;
-  const xpToNextLevel = nextLevelXP - currentXP;
-  const xpProgress = (currentXP / nextLevelXP) * 100;
-
-  // Mock missions data
-  const missions = [
-    {
-      id: 1,
-      title: "Place 5 bets",
-      xpReward: 100,
-      progress: 3,
-      total: 5,
-      type: "daily",
-    },
-    {
-      id: 2,
-      title: "Bet on an accumulator",
-      xpReward: 200,
-      progress: 1,
-      total: 1,
-      type: "daily",
-      completed: true,
-    },
-    {
-      id: 3,
-      title: "Deposit £20",
-      xpReward: 150,
-      progress: 0,
-      total: 1,
-      type: "weekly",
-    },
-  ];
-
-  // Mock rewards data
-  const rewards = [
-    {
-      id: 1,
-      title: "£5 Free Bet",
-      unlocked: true,
-      claimed: true,
-    },
-    {
-      id: 2,
-      title: "50% Deposit Bonus",
-      unlocked: true,
-      claimed: false,
-    },
-    {
-      id: 3,
-      title: "VIP Casino Access",
-      unlocked: false,
-      nextLevel: true,
-    },
-  ];
-
   return (
     <div className="bg-gray-900 text-white rounded-xl">
       {/* Header Section */}
@@ -77,20 +27,20 @@ export const VBLevels = () => {
 
       {/* Level Progress Section */}
       <LevelTracker 
-        userLevel={userLevel}
-        userLevelName={userLevelName}
-        levelNames={levelNames}
-        currentXP={currentXP}
-        nextLevelXP={nextLevelXP}
-        xpToNextLevel={xpToNextLevel}
-        xpProgress={xpProgress}
+        userLevel={USER_LEVEL}
+        userLevelName={USER_LEVEL_NAME}
+        levelNames={LEVEL_NAMES}
+        currentXP={CURRENT_XP}
+        nextLevelXP={NEXT_LEVEL_XP}
+        xpToNextLevel={XP_TO_NEXT_LEVEL}
+        xpProgress={XP_PROGRESS}
       />
 
       {/* Current Missions Section */}
-      <MissionsSection missions={missions} />
+      <MissionsSection missions={MISSIONS} />
 
       {/* Rewards Section */}
-      <RewardsSection rewards={rewards} />
+      <RewardsSection rewards={REWARDS} />
 
       {/* Call to Action */}
       <div className="p-5 bg-virginRedNew/20 rounded-b-xl">
