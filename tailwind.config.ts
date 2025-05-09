@@ -65,6 +65,7 @@ export default {
 				},
 				// Virgin Bet colors
 				virginRed: '#ea384c',
+				virginRedNew: '#E10A0A',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

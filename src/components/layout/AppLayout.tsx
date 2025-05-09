@@ -12,13 +12,13 @@ interface AppLayoutProps {
 export function AppLayout({ children, title }: AppLayoutProps) {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <header className="sticky top-0 z-40 bg-virginRed text-white shadow-md">
-        <div className="h-14 px-4 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-virginRedNew text-white shadow-md h-[148px]">
+        <div className="h-full px-4 flex items-center justify-between">
           <Logo className="h-8 w-auto" />
           <h1 className="text-lg font-bold">{title}</h1>
           <div className="bg-white rounded-full px-4 py-1 flex items-center">
-            <Wallet className="h-4 w-4 text-virginRed mr-1" />
-            <span className="text-virginRed font-bold">£125.99</span>
+            <Wallet className="h-4 w-4 text-virginRedNew mr-1" />
+            <span className="text-virginRedNew font-bold">£125.99</span>
           </div>
         </div>
       </header>
