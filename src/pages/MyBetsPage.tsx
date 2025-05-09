@@ -1,38 +1,14 @@
+
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GripHorizontal, Clock, Wallet } from "lucide-react";
-import { MatchCard } from "@/components/football/MatchCard";
-
-interface BetProps {
-  id: string;
-  date: string;
-  type: string;
-  stake: string;
-  returns: string;
-  status: "Won" | "Lost" | "Open";
-  details: {
-    selection: string;
-    event: string;
-    odds: string;
-  }[];
-}
-
-interface MatchProps {
-  homeTeam: string;
-  awayTeam: string;
-  time: string;
-  date: string;
-  broadcast: string;
-  homeOdds: string;
-  drawOdds: string;
-  awayOdds: string;
-}
+import { BetCard } from "@/components/bets/BetCard";
+import { FixturesList } from "@/components/bets/FixturesList";
+import { EmptyTabContent } from "@/components/bets/EmptyTabContent";
+import { Bet, Match } from "@/types/bet";
 
 const MyBetsPage = () => {
-  const bets: BetProps[] = [
+  const bets: Bet[] = [
     {
       id: "BET1234567",
       date: "Today, 12:30",
@@ -85,7 +61,7 @@ const MyBetsPage = () => {
     },
   ];
 
-  const fixtures: MatchProps[] = [
+  const fixtures: Match[] = [
     {
       homeTeam: "Bodø/Glimt",
       awayTeam: "Tottenham",
@@ -120,35 +96,12 @@ const MyBetsPage = () => {
           </TabsList>
 
           <TabsContent value="open" className="mt-0 space-y-4">
-            <Card className="bg-gray-50 border border-gray-200">
-              <CardContent className="p-8 text-center">
-                <p className="text-gray-600 mb-3">You have no open bets. Check out the latest football fixtures below.</p>
-              </CardContent>
-            </Card>
-
-            <h2 className="text-lg font-bold mt-6 mb-3">Football Fixtures</h2>
-            {fixtures.map((fixture, index) => (
-              <MatchCard
-                key={index}
-                homeTeam={fixture.homeTeam}
-                awayTeam={fixture.awayTeam}
-                time={fixture.time}
-                date={fixture.date}
-                broadcast={fixture.broadcast}
-                homeOdds={fixture.homeOdds}
-                drawOdds={fixture.drawOdds}
-                awayOdds={fixture.awayOdds}
-                onViewMore={() => console.log(`View more for ${fixture.homeTeam} vs ${fixture.awayTeam}`)}
-              />
-            ))}
+            <EmptyTabContent message="You have no open bets. Check out the latest football fixtures below." />
+            <FixturesList fixtures={fixtures} />
           </TabsContent>
 
           <TabsContent value="cashout" className="mt-0 space-y-4">
-            <Card className="bg-gray-50 border border-gray-200">
-              <CardContent className="p-8 text-center">
-                <p className="text-gray-600">You have no cash out bets available.</p>
-              </CardContent>
-            </Card>
+            <EmptyTabContent message="You have no cash out bets available." />
           </TabsContent>
 
           <TabsContent value="history" className="mt-0 space-y-4">
@@ -160,80 +113,11 @@ const MyBetsPage = () => {
           </TabsContent>
 
           <TabsContent value="bonuses" className="mt-0 space-y-4">
-            <Card className="bg-gray-50 border border-gray-200">
-              <CardContent className="p-8 text-center">
-                <p className="text-gray-600">You have no active bonuses.</p>
-              </CardContent>
-            </Card>
+            <EmptyTabContent message="You have no active bonuses." />
           </TabsContent>
         </Tabs>
       </div>
     </AppLayout>
-  );
-};
-
-const BetCard = ({ bet }: { bet: BetProps }) => {
-  return (
-    <Card>
-      <CardHeader className="p-3 border-b">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs text-gray-500">{bet.date}</p>
-            <p className="text-xs font-medium">{bet.id}</p>
-          </div>
-          <div>
-            <span
-              className={`text-xs px-2 py-1 rounded-full ${
-                bet.status === "Won"
-                  ? "bg-green-100 text-green-800"
-                  : bet.status === "Lost"
-                  ? "bg-red-100 text-red-800"
-                  : "bg-blue-100 text-blue-800"
-              }`}
-            >
-              {bet.status}
-            </span>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent className="p-3">
-        <div className="space-y-2">
-          {bet.details.map((detail, index) => (
-            <div key={index} className="text-sm">
-              <p className="font-medium">{detail.selection}</p>
-              <p className="text-xs text-gray-500">{detail.event}</p>
-              <div className="flex justify-between items-center">
-                <p className="text-xs">Odds</p>
-                <p className="text-xs font-medium">{detail.odds}</p>
-              </div>
-            </div>
-          ))}
-          <div className="border-t mt-2 pt-2">
-            <div className="flex justify-between items-center">
-              <p className="text-xs">Type</p>
-              <p className="text-xs font-medium">{bet.type}</p>
-            </div>
-            <div className="flex justify-between items-center">
-              <p className="text-xs">Stake</p>
-              <p className="text-xs font-medium">{bet.stake}</p>
-            </div>
-            <div className="flex justify-between items-center">
-              <p className="text-xs font-medium">Returns</p>
-              <p className="text-xs font-bold">{bet.returns}</p>
-            </div>
-          </div>
-          {bet.status === "Open" && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full mt-2 text-xs border-virginRed text-virginRed hover:bg-virginRed/5"
-            >
-              Cash Out £18.50
-            </Button>
-          )}
-        </div>
-      </CardContent>
-    </Card>
   );
 };
 
