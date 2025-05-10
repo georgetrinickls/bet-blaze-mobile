@@ -83,7 +83,10 @@ export function BottomNav() {
                   ></div>
                 </div>
               )}
-              <div className={cn("relative z-10 flex flex-col items-center")}>
+              <div className={cn(
+                "relative z-10 flex flex-col items-center justify-center",
+                isActive && "h-full flex items-center justify-center"
+              )}>
                 <tab.icon
                   className={cn(
                     "h-5 w-5 mb-1",
