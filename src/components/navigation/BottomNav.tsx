@@ -65,7 +65,7 @@ export function BottomNav() {
               className={cn(
                 "flex flex-col items-center justify-center transition-colors relative",
                 isActive
-                  ? "text-virginRed"
+                  ? "text-white"
                   : "text-gray-600 hover:text-virginRed"
               )}
             >
@@ -76,13 +76,23 @@ export function BottomNav() {
                   {betCount}
                 </Badge>
               )}
-              <tab.icon
-                className={cn(
-                  "h-5 w-5 mb-1",
-                  isActive ? "text-virginRed" : "text-gray-600"
-                )}
-              />
-              <span className="text-xs font-medium">{tab.name}</span>
+              {isActive && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div 
+                    className="bg-[#303F6B] rounded-full w-16 h-16 flex items-center justify-center"
+                    style={{ transform: "translateY(-10%)" }}
+                  ></div>
+                </div>
+              )}
+              <div className={cn("relative z-10 flex flex-col items-center")}>
+                <tab.icon
+                  className={cn(
+                    "h-5 w-5 mb-1",
+                    isActive ? "text-white" : "text-gray-600"
+                  )}
+                />
+                <span className="text-xs font-medium">{tab.name}</span>
+              </div>
             </Link>
           );
         })}
