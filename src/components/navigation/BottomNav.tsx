@@ -47,7 +47,7 @@ export function BottomNav() {
   const { betCount } = useBetSlip();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg pt-8 pb-2">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg pt-4 pb-2">
       <div className="grid h-full grid-cols-5">
         {TAB_ITEMS.map((tab) => {
           const isActive = 
