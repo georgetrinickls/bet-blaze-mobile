@@ -47,7 +47,7 @@ export function BottomNav() {
   const { betCount } = useBetSlip();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg h-16">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg pt-2 pb-2">
       <div className="grid h-full grid-cols-5">
         {TAB_ITEMS.map((tab) => {
           const isActive = 
@@ -77,10 +77,9 @@ export function BottomNav() {
                 </Badge>
               )}
               {isActive && (
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pt-2">
                   <div 
-                    className="bg-[#303F6B] rounded-full w-16 h-16 flex items-center justify-center"
-                    style={{ transform: "translateY(-10%)" }}
+                    className="bg-[#303F6B] rounded-full w-16 h-12 flex items-center justify-center"
                   ></div>
                 </div>
               )}
