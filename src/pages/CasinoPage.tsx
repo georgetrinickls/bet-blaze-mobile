@@ -4,22 +4,15 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CasinoCarousel from "@/components/casino/CasinoCarousel";
 
 const CasinoPage = () => {
   return (
     <AppLayout title="Casino">
       <div className="p-4">
         <Card className="mb-4 overflow-hidden">
-          <CardContent className="p-0 relative">
-            <div className="bg-gradient-to-r from-virginRed to-purple-700 h-32 flex items-end p-4">
-              <div className="text-white">
-                <h2 className="text-xl font-bold">Welcome Bonus</h2>
-                <p className="text-sm opacity-90">50 Free Spins + £50 Bonus</p>
-                <Button size="sm" variant="outline" className="mt-2 bg-white text-virginRed border-0">
-                  Claim Now
-                </Button>
-              </div>
-            </div>
+          <CardContent className="p-0">
+            <CasinoCarousel />
           </CardContent>
         </Card>
         
