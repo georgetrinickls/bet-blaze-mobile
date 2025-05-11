@@ -1,25 +1,17 @@
-
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import LiveCasinoCarousel from "@/components/livecasino/LiveCasinoCarousel";
 
 const LiveCasinoPage = () => {
   return (
     <AppLayout title="Live Casino">
       <div className="p-4">
         <Card className="mb-4 overflow-hidden">
-          <CardContent className="p-0 relative">
-            <div className="bg-gradient-to-r from-virginRedNew to-purple-700 h-32 flex items-end p-4">
-              <div className="text-white">
-                <h2 className="text-xl font-bold">Live Casino Bonus</h2>
-                <p className="text-sm opacity-90">Get £100 Bonus on Live Casino Games</p>
-                <Button size="sm" variant="outline" className="mt-2 bg-white text-virginRedNew border-0">
-                  Play Now
-                </Button>
-              </div>
-            </div>
+          <CardContent className="p-0">
+            <LiveCasinoCarousel />
           </CardContent>
         </Card>
         
