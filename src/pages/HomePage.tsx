@@ -16,7 +16,7 @@ const HomePage = () => {
 
         {/* Featured Bet Builder */}
         <section className="pt-2">
-          <BetBuilderCard 
+          <BetBuilderCard
             match={betBuilderData.match}
             options={betBuilderData.options}
             odds={betBuilderData.odds}
@@ -29,7 +29,7 @@ const HomePage = () => {
           <MatchesList fixtures={fixtures} />
         </section>
 
-        {/* Explore Popular Sports */}
+        {/* Popular Sports */}
         <section>
           <PopularSports />
         </section>
