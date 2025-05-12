@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BottomNav } from "@/components/navigation/BottomNav";
 import { Wallet } from "lucide-react";
@@ -12,20 +11,26 @@ interface AppLayoutProps {
 
 export function AppLayout({ children, title }: AppLayoutProps) {
   const location = useLocation();
-  
-  // Define navigation tabs
-  const tabs = [
-    { name: "Sports", path: "/" },
-    { name: "Casino", path: "/casino" },
-    { name: "Live Casino", path: "/live-casino" },
-    { name: "Promotions", path: "/promotions" }
-  ];
 
-  // Function to check if a tab is active
-  const isActive = (path: string) => {
-    if (path === "/" && location.pathname === "/") return true;
-    return location.pathname === path;
-  };
+  // Check if we're on any /my-bets route
+  const isMyBetsPage = location.pathname.startsWith("/my-bets");
+
+  // Tabs depending on route
+  const tabs = isMyBetsPage
+    ? [
+        { name: "Open", path: "/my-bets" },
+        { name: "Cash Out", path: "/my-bets/cash-out" },
+        { name: "History", path: "/my-bets/history" },
+        { name: "Bonuses", path: "/my-bets/bonuses" }
+      ]
+    : [
+        { name: "Sports", path: "/" },
+        { name: "Casino", path: "/casino" },
+        { name: "Live Casino", path: "/live-casino" },
+        { name: "Promotions", path: "/promotions" }
+      ];
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
@@ -37,14 +42,15 @@ export function AppLayout({ children, title }: AppLayoutProps) {
             <span className="text-virginRedNew font-bold text-sm">£125.99</span>
           </div>
         </div>
-        
-        {/* Navigation tabs - updated to stretch full width with reduced font size */}
+
         <div className="flex h-1/3 w-full">
           {tabs.map((tab) => (
             <Link
               key={tab.name}
               to={tab.path}
-              className={`flex-1 flex items-center justify-center relative text-sm ${isActive(tab.path) ? "font-bold" : ""}`}
+              className={`flex-1 flex items-center justify-center relative text-sm ${
+                isActive(tab.path) ? "font-bold" : ""
+              }`}
             >
               {tab.name}
               {isActive(tab.path) && (
@@ -55,9 +61,7 @@ export function AppLayout({ children, title }: AppLayoutProps) {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto no-scrollbar pb-20">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       <BottomNav />
     </div>
