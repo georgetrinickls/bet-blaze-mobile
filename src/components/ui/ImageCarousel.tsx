@@ -9,7 +9,6 @@ import 'swiper/css/autoplay';
 
 const ImageCarousel: React.FC = () => {
   const images = [
-    "https://cdn.virginbet.com/headlines/images/vb-3kroulette-1105.jpg",
     "https://cdn.virginbet.com/headlines/images/vb-newweeklyaccaoffer.jpg",
     "https://cdn.virginbet.com/headlines/images/vb-2up.png",
     "https://www.virginbet.com/about-us/VBUK-Gates-Of-Hades-Non-Promo-Banner-55685.jpg",
