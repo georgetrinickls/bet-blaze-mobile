@@ -3,7 +3,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import LiveCasinoCarousel from "@/components/livecasino/LiveCasinoCarousel";
+import LiveCasinoCarousel from "@/components/ui/ImageCarousel";
 
 const LiveCasinoPage = () => {
   return (
