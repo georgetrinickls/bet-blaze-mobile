@@ -1,4 +1,3 @@
-
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
@@ -11,23 +10,29 @@ import { betBuilderData } from "@/data/betBuilderData";
 const HomePage = () => {
   return (
     <AppLayout title="Home">
-      <div className="p-4 space-y-4">
-        {/* Image Carousel */}
+      <div className="p-4 space-y-6">
+        {/* Promo Banner Carousel */}
         <ImageCarousel />
-        
-        {/* Popular Bet Builder Card */}
-        <BetBuilderCard 
-          match={betBuilderData.match}
-          options={betBuilderData.options}
-          odds={betBuilderData.odds}
-          onAddToBetslip={() => console.log("Added to betslip:", betBuilderData)}
-        />
-        
+
+        {/* Featured Bet Builder */}
+        <section className="pt-2">
+          <BetBuilderCard 
+            match={betBuilderData.match}
+            options={betBuilderData.options}
+            odds={betBuilderData.odds}
+            onAddToBetslip={() => console.log("Added to betslip:", betBuilderData)}
+          />
+        </section>
+
         {/* Today's Matches */}
-        <MatchesList fixtures={fixtures} />
-        
-        {/* Popular Sports */}
-        <PopularSports />
+        <section>
+          <MatchesList fixtures={fixtures} />
+        </section>
+
+        {/* Explore Popular Sports */}
+        <section>
+          <PopularSports />
+        </section>
       </div>
     </AppLayout>
   );
