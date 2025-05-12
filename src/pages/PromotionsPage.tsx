@@ -4,7 +4,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { VBLevels } from "@/components/promotions/VBLevels";
 import { Badge } from "@/components/ui/badge";
-import ImageCarousel from "@/components/homepage/ImageCarousel";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 
 const PromotionsPage = () => {
   const [activeTab, setActiveTab] = useState("promotions");
