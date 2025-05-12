@@ -4,7 +4,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CasinoCarousel from "@/components/casino/CasinoCarousel";
+import CasinoCarousel from "@/components/ui/ImageCarousel";
 
 const CasinoPage = () => {
   return (
