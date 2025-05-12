@@ -2,7 +2,7 @@
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
-import ImageCarousel from "@/components/homepage/ImageCarousel";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 import MatchesList from "@/components/homepage/MatchesList";
 import PopularSports from "@/components/homepage/PopularSports";
 import { fixtures } from "@/data/fixtures";
