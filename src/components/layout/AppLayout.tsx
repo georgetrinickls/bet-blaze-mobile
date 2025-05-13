@@ -1,8 +1,8 @@
 import React from "react";
 import { BottomNav } from "@/components/navigation/BottomNav";
-import { Wallet } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
 import Logo from "@/components/ui/Logo";
-import { Link, useLocation } from "react-router-dom";
+import BalanceIcon from "@/components/ui/BalanceIcon";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -12,10 +12,8 @@ interface AppLayoutProps {
 export function AppLayout({ children, title }: AppLayoutProps) {
   const location = useLocation();
 
-  // Check if we're on any /my-bets route
   const isMyBetsPage = location.pathname.startsWith("/my-bets");
 
-  // Tabs depending on route
   const tabs = isMyBetsPage
     ? [
         { name: "Open", path: "/my-bets" },
@@ -37,10 +35,7 @@ export function AppLayout({ children, title }: AppLayoutProps) {
       <header className="sticky top-0 z-40 bg-virginRedNew text-white shadow-md h-[136px]">
         <div className="h-2/3 px-4 flex items-center justify-between">
           <Logo className="h-8 w-auto" />
-          <div className="bg-white rounded-full px-4 py-1 flex items-center">
-            <Wallet className="h-4 w-4 text-virginRedNew mr-1" />
-            <span className="text-virginRedNew font-bold text-sm">£125.99</span>
-          </div>
+          <BalanceIcon />
         </div>
 
         <div className="flex h-1/3 w-full">
