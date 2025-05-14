@@ -1,9 +1,6 @@
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
@@ -24,34 +21,36 @@ const ImageCarousel: React.FC = () => {
   ];
 
   return (
-    <div className="w-full flex justify-center pt-3">
-      <Swiper
-        modules={[Autoplay]}
-        spaceBetween={20}
-        slidesPerView={1.2}
-        centeredSlides={true}
-        loop={true}
-        autoplay={{
-          delay: 10000,
-          disableOnInteraction: false,
-        }}
-        className="overflow-visible"
-        style={{ width: '384px', height: '133px' }}
-      >
-        {images.map((image, index) => (
-          <SwiperSlide
-            key={index}
-            style={{ width: '384px', height: '133px' }}
-            className="rounded-lg overflow-hidden"
-          >
-            <img 
-              src={image} 
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="w-full overflow-x-auto no-scrollbar">
+      <div className="w-[1200px] max-w-none mx-auto">
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1.2}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: false,
+          }}
+          className="overflow-visible"
+          style={{ height: '133px' }}
+        >
+          {images.map((image, index) => (
+            <SwiperSlide
+              key={index}
+              style={{ width: '384px', height: '133px' }}
+              className="rounded-lg overflow-hidden"
+            >
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
