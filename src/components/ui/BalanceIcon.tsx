@@ -2,7 +2,7 @@ import React from 'react';
 
 const BalanceButton: React.FC = () => {
   return (
-    <div className="flex items-center rounded-full bg-white border border-gray-300 px-2 py-1 space-x-2 w-fit shadow-sm">
+<div className="flex items-center rounded-full bg-white border border-gray-300 pl-3 pr-1 py-1 space-x-2 w-fit shadow-sm">
       <span className="text-sm font-semibold text-black">£125.99</span>
       <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
         <span className="text-xs text-gray-600">👤</span>
