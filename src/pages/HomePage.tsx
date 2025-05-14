@@ -1,9 +1,11 @@
+
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import MatchesList from "@/components/homepage/MatchesList";
 import PopularSports from "@/components/homepage/PopularSports";
+import QuickLinks from "@/components/homepage/QuickLinks";
 import { fixtures } from "@/data/fixtures";
 import { betBuilderData } from "@/data/betBuilderData";
 
@@ -13,6 +15,9 @@ const HomePage = () => {
       <div className="p-4 space-y-6">
         {/* Promo Banner Carousel */}
         <ImageCarousel />
+
+        {/* Quick Links */}
+        <QuickLinks />
 
         {/* Featured Bet Builder */}
         <section className="pt-2">
