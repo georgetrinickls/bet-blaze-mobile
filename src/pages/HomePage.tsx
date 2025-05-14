@@ -16,7 +16,6 @@ const HomePage = () => {
         {/* Promo Banner Carousel */}
         <ImageCarousel />
 
-        {/* Quick Links */}
         <QuickLinks />
 
         {/* Featured Bet Builder */}
