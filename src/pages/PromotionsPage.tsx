@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { VBLevels } from "@/components/promotions/VBLevels";
+import { PromotionsHub } from "@/components/promotions/PromotionsHub";
 import { Badge } from "@/components/ui/badge";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 
@@ -18,13 +19,16 @@ const PromotionsPage = () => {
           onValueChange={setActiveTab} 
           className="w-full"
         >
-          <TabsList className="grid w-full grid-cols-2 mb-4">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
             <TabsTrigger value="promotions">Promotions</TabsTrigger>
-            <TabsTrigger value="vblevels" className="relative">
-              VB Levels
+            <TabsTrigger value="promotions-hub" className="relative">
+              Promotions Hub
               <Badge className="absolute -top-1 -right-1 bg-virginRedNew text-white text-xs min-w-5 h-5 flex items-center justify-center rounded-full p-0">
                 NEW
               </Badge>
+            </TabsTrigger>
+            <TabsTrigger value="vblevels">
+              VB Levels
             </TabsTrigger>
           </TabsList>
           
@@ -44,6 +48,10 @@ const PromotionsPage = () => {
                 <p className="text-sm text-gray-600">Get paid out as a winner if your team goes 2 goals ahead.</p>
               </div>
             </div>
+          </TabsContent>
+          
+          <TabsContent value="promotions-hub">
+            <PromotionsHub />
           </TabsContent>
           
           <TabsContent value="vblevels">
