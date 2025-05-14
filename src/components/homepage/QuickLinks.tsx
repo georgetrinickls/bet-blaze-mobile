@@ -2,13 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
-  Football, 
-  Horse, 
-  Tennis as TennisCourt, 
-  Cricket, 
-  Golf, 
-  Boxing, 
-  Rugby
+  GraduationCap, 
+  Horse as HorseIcon,
+  TennisBall,
+  Cricket as CricketBall, 
+  GalleryThumbnails as GolfIcon, 
+  Dumbbell,
+  Flag
 } from "lucide-react";
 
 // Define types for our sports
@@ -20,14 +20,14 @@ interface SportLink {
 
 const QuickLinks = () => {
   const sports: SportLink[] = [
-    { name: "Football", icon: Football, path: "/sports/football" },
-    { name: "Horse Racing", icon: Horse, path: "/sports/horse-racing" },
-    { name: "Tennis", icon: TennisCourt, path: "/sports/tennis" },
-    { name: "Greyhounds", icon: Horse, path: "/sports/greyhounds" },
-    { name: "Cricket", icon: Cricket, path: "/sports/cricket" },
-    { name: "Golf", icon: Golf, path: "/sports/golf" },
-    { name: "Boxing", icon: Boxing, path: "/sports/boxing" },
-    { name: "Rugby Union", icon: Rugby, path: "/sports/rugby-union" },
+    { name: "Football", icon: GraduationCap, path: "/sports/football" },
+    { name: "Horse Racing", icon: HorseIcon, path: "/sports/horse-racing" },
+    { name: "Tennis", icon: TennisBall, path: "/sports/tennis" },
+    { name: "Greyhounds", icon: HorseIcon, path: "/sports/greyhounds" },
+    { name: "Cricket", icon: CricketBall, path: "/sports/cricket" },
+    { name: "Golf", icon: GolfIcon, path: "/sports/golf" },
+    { name: "Boxing", icon: Dumbbell, path: "/sports/boxing" },
+    { name: "Rugby Union", icon: Flag, path: "/sports/rugby-union" },
   ];
 
   return (
