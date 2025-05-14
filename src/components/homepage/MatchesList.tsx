@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Badge } from "@/components/ui/badge";
@@ -9,23 +10,32 @@ interface MatchesListProps {
 const MatchesList = ({
   fixtures
 }: MatchesListProps) => {
-  const [activeFilter, setActiveFilter] = useState("1X2");
+  const [activeFilter, setActiveFilter] = useState("Football");
 
-  // Filter options
-  const filterOptions = ["1X2", "BTTS", "Over/Under 1.5 Goals", "Over/Under 2.5 Goals"];
+  // Filter options matching the quick links
+  const filterOptions = ["Football", "Cricket", "Boxing", "Tennis", "Golf", "Horseracing", "Greyhounds", "Rugby Union"];
   const handleFilterChange = (value: string) => {
     if (value) setActiveFilter(value);
   };
   return <>
-      <h2 className="font-bold text-lg pt-0\\n">Today's Matches</h2>
+      <h2 className="font-bold text-lg mb-4">Today's Matches</h2>
       
       <div className="overflow-x-auto pb-2 no-scrollbar">
         <ToggleGroup type="single" value={activeFilter} onValueChange={handleFilterChange} className="flex space-x-2">
-          {filterOptions.map(option => <ToggleGroupItem key={option} value={option} variant="outline" className="whitespace-nowrap rounded-full px-4 py-2 text-sm ">
-              {activeFilter === option ? <Badge variant="default" className="bg-virginRed">
+          {filterOptions.map(option => (
+            <ToggleGroupItem 
+              key={option} 
+              value={option} 
+              variant="outline" 
+              className="whitespace-nowrap rounded-full px-4 py-2 text-sm"
+            >
+              {activeFilter === option ? (
+                <span className="bg-[#303F6B] text-white px-3 py-1 rounded-full">
                   {option}
-                </Badge> : option}
-            </ToggleGroupItem>)}
+                </span>
+              ) : option}
+            </ToggleGroupItem>
+          ))}
         </ToggleGroup>
       </div>
       
