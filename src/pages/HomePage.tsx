@@ -12,7 +12,7 @@ import { betBuilderData } from "@/data/betBuilderData";
 const HomePage = () => {
   return (
     <AppLayout title="Home">
-      <div className="p-4 space-y-6">
+      <div className="p-4 space-y-4">
         {/* Promo Banner Carousel */}
         <ImageCarousel />
 
