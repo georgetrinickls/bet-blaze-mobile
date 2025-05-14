@@ -33,12 +33,12 @@ const ImageCarousel: React.FC = () => {
           disableOnInteraction: false,
         }}
         className="overflow-visible"
-        style={{ height: '133px', maxWidth: '384px' }}
+        style={{ height: '141px', maxWidth: '407px' }}
       >
         {images.map((image, index) => (
           <SwiperSlide
             key={index}
-            style={{ width: '384px', height: '133px' }}
+            style={{ width: '407px', height: '141px' }}
             className="rounded-lg overflow-hidden"
           >
             <img
