@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
-import { BetBuilderCard } from "@/components/betbuilder/BetBuilderCard";
+import { BetBuilderCard } from "@/components/ui/PriceBoost";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import MatchesList from "@/components/homepage/MatchesList";
 import PopularSports from "@/components/homepage/PopularSports";
