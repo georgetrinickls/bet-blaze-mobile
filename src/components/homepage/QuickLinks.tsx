@@ -35,14 +35,14 @@ const QuickLinks = () => {
   return (
     <section className="mb-6">
       <h2 className="font-bold text-lg mb-3">Quick Links</h2>
-      <ScrollArea className="w-full">
-        <div className="flex space-x-3 pb-3 px-1">
+      <ScrollArea className="w-full" orientation="horizontal">
+        <div className="flex space-x-3 pb-4 px-1" style={{ paddingRight: "20px" }}>
           {sports.map((sport) => (
             <Link
               key={sport.name}
               to={sport.path}
               className={cn(
-                "flex flex-col items-center justify-center",
+                "flex-shrink-0 flex flex-col items-center justify-center",
                 "min-w-[70px] h-[70px] p-2",
                 "rounded-lg bg-card shadow-sm",
                 "border border-border hover:bg-accent transition-all"
