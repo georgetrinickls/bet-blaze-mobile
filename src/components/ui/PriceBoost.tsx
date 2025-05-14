@@ -6,7 +6,7 @@ const PriceBoost: React.FC = () => {
       {/* Header */}
       <div className="flex items-center">
         <svg
-          width="24"
+          width="296"
           height="24"
           viewBox="0 0 296 24"
           fill="none"
@@ -21,7 +21,7 @@ const PriceBoost: React.FC = () => {
               strokeLinejoin="round"
             />
             <path
-              d="M9.97587 15.0986L8.73083 11.2526L11.9999 8.87598L15.2689 11.2526L14.0239 15.0986H9.97587Z"
+              d="M9.97587 15.099L8.73083 11.2531L11.9999 8.87646L15.2689 11.2531L14.0239 15.099H9.97587Z"
               stroke="#111111"
               strokeLinecap="round"
               strokeLinejoin="round"
