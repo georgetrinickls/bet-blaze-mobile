@@ -17,25 +17,13 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
 }) => {
   return (
     <div className="w-[320px] p-3 rounded-xl shadow border border-gray-200 bg-white space-y-4 flex-shrink-0">
-      {/* Styled PRICE BOOST Header */}
-      <div className="flex items-center rounded-full overflow-hidden w-full h-8 bg-white shadow-sm">
-        <div className="bg-[#00E5C4] w-8 h-8 flex items-center justify-center">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="12" cy="12" r="11" stroke="#111111" strokeWidth="2" />
-            <path d="M4 8L12 12L20 8" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <div className="bg-white flex-1 pl-2 pr-3">
-          <span className="text-black font-bold italic uppercase text-sm tracking-tight">
-            PRICE BOOST
-          </span>
-        </div>
+      {/* PRICE BOOST Banner */}
+      <div className="w-full">
+        <img
+          src="/icons/Streamline/priceboost.svg"
+          alt="Price Boost"
+          className="w-full h-6 object-contain"
+        />
       </div>
 
       {/* Match Title */}
@@ -60,7 +48,11 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
       <div className="border border-gray-300 rounded-lg px-4 py-2 flex justify-center items-center space-x-2 text-sm font-semibold">
         <span className="line-through text-gray-400">{oldOdds}</span>
         <span className="text-[#00E5C4] font-bold">{newOdds}</span>
-        <span className="text-[#00E5C4] text-lg leading-none">⬆</span>
+        <img
+          src="/icons/Streamline/pbchevron.svg"
+          alt="Boost Up"
+          className="w-4 h-4"
+        />
       </div>
     </div>
   );
