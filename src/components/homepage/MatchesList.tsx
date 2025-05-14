@@ -17,7 +17,7 @@ const MatchesList = ({
     if (value) setActiveFilter(value);
   };
   return <>
-      <h2 className="font-bold text-lg pt-0\n">Today's Matches</h2>
+      <h2 className="font-bold text-lg pt-0\\n">Today's Matches</h2>
       
       <div className="overflow-x-auto pb-2 no-scrollbar">
         <ToggleGroup type="single" value={activeFilter} onValueChange={handleFilterChange} className="flex space-x-2">

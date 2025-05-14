@@ -9,7 +9,7 @@ import { fixtures } from "@/data/fixtures";
 import { betBuilderData } from "@/data/betBuilderData";
 const HomePage = () => {
   return <AppLayout title="Home">
-      <div className="p-4 space-y-4">
+      <div className="p-4 space-y-0\n">
         {/* Promo Banner Carousel */}
         <ImageCarousel />
 
