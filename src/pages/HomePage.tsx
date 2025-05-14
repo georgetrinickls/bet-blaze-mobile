@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
-import PriceBoost from "@/components/ui/PriceBoost";
+import PriceBoostCarousel from "@/components/ui/PriceBoostCarousel";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import MatchesList from "@/components/homepage/MatchesList";
 import PopularSports from "@/components/homepage/PopularSports";
@@ -10,17 +10,15 @@ import { fixtures } from "@/data/fixtures";
 const HomePage = () => {
   return (
     <AppLayout title="Home">
-      <div className="p-4 space-y-4">
+      <div className="p-4 space-y-6">
         {/* Promo Banner Carousel */}
         <ImageCarousel />
 
         {/* Quick Links */}
         <QuickLinks />
 
-        {/* Featured Price Boost */}
-        <section>
-          <PriceBoost />
-        </section>
+        {/* Price Boost Carousel */}
+        <PriceBoostCarousel />
 
         {/* Today's Matches */}
         <section>
