@@ -32,7 +32,7 @@ const QuickLinks = () => {
               )}
             >
               <img
-                src={`/icons/streamline/${sport.icon}`}
+                src={`/icons/Streamline/${sport.icon}`}
                 alt={sport.name}
                 className="w-5 h-5 mb-1 object-contain"
               />
