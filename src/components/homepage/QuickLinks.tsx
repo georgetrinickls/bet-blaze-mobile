@@ -7,7 +7,7 @@ const QuickLinks = () => {
   const sports = [
     { name: "Boxing", icon: "boxing.svg", path: "/sports/boxing" },
     { name: "Cricket", icon: "cricket.svg", path: "/sports/cricket" },
-    { name: "Football", icon: "football.svg", path: "/sports/football" },
+    { name: "Football", icon: "football.svg", path: "public/icons/Streamline/Boxing" },
     { name: "Golf", icon: "golf.svg", path: "/sports/golf" },
     { name: "Greyhounds", icon: "greyhounds.svg", path: "/sports/greyhounds" },
     { name: "Horseracing", icon: "horseracing.svg", path: "/sports/horse-racing" },
