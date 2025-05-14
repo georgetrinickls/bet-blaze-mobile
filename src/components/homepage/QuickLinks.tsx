@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { 
   GraduationCap, 
   Bike,
-  Tennis, 
+  TennisBall, 
   Dog, 
   GalleryThumbnails as GolfIcon, 
   Dumbbell,
@@ -22,9 +22,9 @@ const QuickLinks = () => {
   const sports: SportLink[] = [
     { name: "Football", icon: GraduationCap, path: "/sports/football" },
     { name: "Horse Racing", icon: Bike, path: "/sports/horse-racing" },
-    { name: "Tennis", icon: Tennis, path: "/sports/tennis" },
+    { name: "Tennis", icon: TennisBall, path: "/sports/tennis" },
     { name: "Greyhounds", icon: Dog, path: "/sports/greyhounds" },
-    { name: "Cricket", icon: Tennis, path: "/sports/cricket" },
+    { name: "Cricket", icon: TennisBall, path: "/sports/cricket" },
     { name: "Golf", icon: GolfIcon, path: "/sports/golf" },
     { name: "Boxing", icon: Dumbbell, path: "/sports/boxing" },
     { name: "Rugby Union", icon: Flag, path: "/sports/rugby-union" },
