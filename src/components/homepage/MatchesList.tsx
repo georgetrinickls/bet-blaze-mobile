@@ -29,28 +29,31 @@ const MatchesList = ({ fixtures }: MatchesListProps) => {
     <>
       <h2 className="font-bold text-lg mb-4">Today's Matches</h2>
 
-      <div className="overflow-x-auto pb-2 no-scrollbar">
-        <ToggleGroup
-          type="single"
-          value={activeFilter}
-          onValueChange={handleFilterChange}
-          className="flex space-x-2"
-        >
-          {filterOptions.map((option) => (
-            <ToggleGroupItem
-              key={option}
-              value={option}
-              variant="outline"
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm transition-all duration-200 ease-in-out ${
-                activeFilter === option
-                  ? "bg-[#303F6B] text-white border-transparent scale-105"
-                  : "bg-white text-black"
-              }`}
-            >
-              {option}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
+      {/* Pill Rail */}
+      <div className="overflow-x-auto pb-2 no-scrollbar text-left">
+        <div className="w-max">
+          <ToggleGroup
+            type="single"
+            value={activeFilter}
+            onValueChange={handleFilterChange}
+            className="inline-flex space-x-2"
+          >
+            {filterOptions.map((option) => (
+              <ToggleGroupItem
+                key={option}
+                value={option}
+                variant="outline"
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm transition-all duration-200 ease-in-out ${
+                  activeFilter === option
+                    ? "bg-[#303F6B] text-white border-transparent scale-105"
+                    : "bg-white text-black"
+                }`}
+              >
+                {option}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
       </div>
 
       {/* Match Cards */}
