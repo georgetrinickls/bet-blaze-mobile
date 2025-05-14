@@ -3,9 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { 
   GraduationCap, 
-  Horse as HorseIcon,
-  TennisBall,
-  Cricket as CricketBall, 
+  Bike,
+  Tennis, 
+  Dog, 
   GalleryThumbnails as GolfIcon, 
   Dumbbell,
   Flag
@@ -21,10 +21,10 @@ interface SportLink {
 const QuickLinks = () => {
   const sports: SportLink[] = [
     { name: "Football", icon: GraduationCap, path: "/sports/football" },
-    { name: "Horse Racing", icon: HorseIcon, path: "/sports/horse-racing" },
-    { name: "Tennis", icon: TennisBall, path: "/sports/tennis" },
-    { name: "Greyhounds", icon: HorseIcon, path: "/sports/greyhounds" },
-    { name: "Cricket", icon: CricketBall, path: "/sports/cricket" },
+    { name: "Horse Racing", icon: Bike, path: "/sports/horse-racing" },
+    { name: "Tennis", icon: Tennis, path: "/sports/tennis" },
+    { name: "Greyhounds", icon: Dog, path: "/sports/greyhounds" },
+    { name: "Cricket", icon: Tennis, path: "/sports/cricket" },
     { name: "Golf", icon: GolfIcon, path: "/sports/golf" },
     { name: "Boxing", icon: Dumbbell, path: "/sports/boxing" },
     { name: "Rugby Union", icon: Flag, path: "/sports/rugby-union" },
