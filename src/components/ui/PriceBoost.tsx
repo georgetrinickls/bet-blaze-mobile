@@ -17,32 +17,24 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
 }) => {
   return (
     <div className="w-[320px] p-3 rounded-xl shadow border border-gray-200 bg-white space-y-4 flex-shrink-0">
-      {/* Header Row */}
-      <div className="flex justify-between items-start">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 flex items-center justify-center">
-            {/* Icon */}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="12" fill="#00E5C4" />
-              <path
-                d="M9.97587 15.099L8.73083 11.2531L12.0001 8.87646L15.2689 11.2531L14.0239 15.099H9.97587Z"
-                stroke="#111"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12 7.11133V8.87654"
-                stroke="#111"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <span className="text-sm font-bold text-black">PRICE BOOST</span>
+      {/* Styled PRICE BOOST Header */}
+      <div className="flex items-center rounded-full overflow-hidden w-full h-8 bg-white shadow-sm">
+        <div className="bg-[#00E5C4] w-8 h-8 flex items-center justify-center">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="11" stroke="#111111" strokeWidth="2" />
+            <path d="M4 8L12 12L20 8" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
-        <div className="flex items-center space-x-2 text-xs text-gray-600 font-semibold">
-          <div className="bg-gray-100 px-2 py-1 rounded-full">£1 max</div>
-          <div className="bg-gray-100 px-2 py-1 rounded-full">🔥 {bets} bets</div>
+        <div className="bg-white flex-1 pl-2 pr-3">
+          <span className="text-black font-bold italic uppercase text-sm tracking-tight">
+            PRICE BOOST
+          </span>
         </div>
       </div>
 
