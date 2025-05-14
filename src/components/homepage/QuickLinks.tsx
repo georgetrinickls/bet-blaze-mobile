@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import StreamlineIcon from "@/components/ui/StreamlineIcon";
 import { cn } from "@/lib/utils";
 
 const QuickLinks = () => {
   const sports = [
-    { name: "Football", icon: "soccer-ball", path: "/sports/football" },
-    { name: "Horse Racing", icon: "horse-silhouette", path: "/sports/horse-racing" },
-    { name: "Tennis", icon: "tennis-ball", path: "/sports/tennis" },
-    { name: "Greyhounds", icon: "dog-silhouette-running", path: "/sports/greyhounds" },
-    { name: "Cricket", icon: "cricket-ball", path: "/sports/cricket" },
-    { name: "Golf", icon: "golf-flag", path: "/sports/golf" },
-    { name: "Boxing", icon: "boxing-glove", path: "/sports/boxing" },
-    { name: "Rugby Union", icon: "rugby-ball", path: "/sports/rugby-union" }
+    { name: "Boxing", icon: "boxing.svg", path: "/sports/boxing" },
+    { name: "Cricket", icon: "cricket.svg", path: "/sports/cricket" },
+    { name: "Football", icon: "football.svg", path: "/sports/football" },
+    { name: "Golf", icon: "golf.svg", path: "/sports/golf" },
+    { name: "Greyhounds", icon: "greyhounds.svg", path: "/sports/greyhounds" },
+    { name: "Horseracing", icon: "horseracing.svg", path: "/sports/horse-racing" },
+    { name: "Rugby Union", icon: "rugby-union.svg", path: "/sports/rugby-union" },
+    { name: "Tennis", icon: "tennis.svg", path: "/sports/tennis" }
   ];
 
   return (
@@ -32,7 +31,11 @@ const QuickLinks = () => {
                 "border border-border hover:bg-accent transition-all"
               )}
             >
-              <StreamlineIcon name={sport.icon} alt={sport.name} />
+              <img
+                src={`/icons/streamline/${sport.icon}`}
+                alt={sport.name}
+                className="w-5 h-5 mb-1 object-contain"
+              />
               <span className="text-xs text-center">{sport.name}</span>
             </Link>
           ))}
