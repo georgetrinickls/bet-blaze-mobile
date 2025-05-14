@@ -10,6 +10,8 @@ import {
   Dumbbell,
   Flag
 } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 // Define types for our sports
 interface SportLink {
@@ -33,18 +35,25 @@ const QuickLinks = () => {
   return (
     <section className="mb-6">
       <h2 className="font-bold text-lg mb-3">Quick Links</h2>
-      <div className="grid grid-cols-4 gap-3">
-        {sports.map((sport) => (
-          <Link
-            key={sport.name}
-            to={sport.path}
-            className="flex flex-col items-center justify-center w-[60px] h-[60px] rounded-lg bg-white bg-opacity-5 border border-gray-700 hover:bg-opacity-10 transition-all"
-          >
-            <sport.icon className="w-5 h-5 mb-1 text-virginRed" />
-            <span className="text-[10px] text-center">{sport.name}</span>
-          </Link>
-        ))}
-      </div>
+      <ScrollArea className="w-full">
+        <div className="flex space-x-3 pb-3 px-1">
+          {sports.map((sport) => (
+            <Link
+              key={sport.name}
+              to={sport.path}
+              className={cn(
+                "flex flex-col items-center justify-center",
+                "min-w-[70px] h-[70px] p-2",
+                "rounded-lg bg-card shadow-sm",
+                "border border-border hover:bg-accent transition-all"
+              )}
+            >
+              <sport.icon className="w-5 h-5 mb-1 text-foreground" />
+              <span className="text-xs text-center">{sport.name}</span>
+            </Link>
+          ))}
+        </div>
+      </ScrollArea>
     </section>
   );
 };
