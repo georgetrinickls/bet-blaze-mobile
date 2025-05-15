@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { PromotionCard } from "@/components/promotions/PromotionCard";
+import { PromotionCard } from "@/components/ui/ImageCarousel";
 import { 
   ChevronLeft, 
   Inbox, 
