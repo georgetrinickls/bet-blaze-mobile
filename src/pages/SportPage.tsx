@@ -8,6 +8,7 @@ import { FeaturedMatches } from "@/components/sports/FeaturedMatches";
 import { LeaguesCompetitions } from "@/components/sports/LeaguesCompetitions";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AppLayout } from "@/components/layout/AppLayout";
 
 const SportPage = () => {
   const { sport } = useParams<{ sport: string }>();
