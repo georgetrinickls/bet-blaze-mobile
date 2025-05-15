@@ -47,7 +47,7 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
       {/* Odds Box */}
       <div className="border border-gray-300 rounded-lg px-4 py-2 flex justify-center items-center space-x-2 text-sm font-semibold">
         <span className="line-through text-gray-400">{oldOdds}</span>
-        <span className="text-[#00E5C4] font-bold">{newOdds}</span>
+        <span className="text-[#000000] font-bold">{newOdds}</span>
         <img
           src="/icons/Streamline/pbchevron.svg"
           alt="Boost Up"
