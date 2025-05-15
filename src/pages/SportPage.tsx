@@ -28,7 +28,7 @@ const SportPage = () => {
   };
 
   return (
-    <AppLayout title={displayName} hideTitle>
+    <AppLayout title={displayName} hideTitle hideHeader>
       {/* Custom red header */}
       <div className="flex items-center p-4 bg-virginRedNew text-white border-b border-gray-200">
         <Button
