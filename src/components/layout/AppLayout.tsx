@@ -6,10 +6,11 @@ import BalanceIcon from "@/components/ui/BalanceIcon";
 
 interface AppLayoutProps {
   children: React.ReactNode;
-  title: string;
+  title?: string;
+  hideTitle?: boolean;
 }
 
-export function AppLayout({ children, title }: AppLayoutProps) {
+export function AppLayout({ children, title, hideTitle }: AppLayoutProps) {
   const location = useLocation();
 
   const isMyBetsPage = location.pathname.startsWith("/my-bets");
@@ -56,7 +57,12 @@ export function AppLayout({ children, title }: AppLayoutProps) {
         </div>
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        {!hideTitle && title && (
+          <h1 className="text-xl font-bold mb-4 px-4 mt-4">{title}</h1>
+        )}
+        {children}
+      </main>
 
       <BottomNav />
     </div>
