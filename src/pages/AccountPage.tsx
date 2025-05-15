@@ -22,7 +22,7 @@ import {
 const AccountPage = () => {
   const navigate = useNavigate();
   
-  const username = "John";
+  const username = "George";
   const balance = "£125.99";
   const unreadMessages = 3;
   
