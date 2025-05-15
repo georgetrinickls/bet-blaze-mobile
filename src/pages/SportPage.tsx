@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -38,9 +38,19 @@ const SportPage = () => {
       </div>
       
       <Tabs defaultValue="popular" className="w-full">
-        <TabsList className="w-full sticky top-[136px] z-30 bg-white rounded-none border-b border-gray-200">
-          <TabsTrigger value="popular" className="flex-1 data-[state=active]:bg-white">Popular</TabsTrigger>
-          <TabsTrigger value="leagues" className="flex-1 data-[state=active]:bg-white">Leagues & Competitions</TabsTrigger>
+        <TabsList className="w-full sticky top-[64px] z-30 bg-white rounded-none border-b border-gray-200 p-0 h-auto">
+          <TabsTrigger 
+            value="popular" 
+            className="flex-1 data-[state=active]:bg-white py-3 border-b-2 border-transparent data-[state=active]:border-virginRedNew data-[state=active]:font-bold rounded-none"
+          >
+            Popular
+          </TabsTrigger>
+          <TabsTrigger 
+            value="leagues" 
+            className="flex-1 data-[state=active]:bg-white py-3 border-b-2 border-transparent data-[state=active]:border-virginRedNew data-[state=active]:font-bold rounded-none"
+          >
+            Leagues & Competitions
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="popular" className="mt-0 p-4">
