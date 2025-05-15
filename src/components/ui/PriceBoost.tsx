@@ -36,7 +36,7 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
       <div className="space-y-1 text-sm">
         {selections.map((line, index) => (
           <div key={index} className="flex items-start space-x-2">
-            <div className="w-2 h-2 bg-[#000000] rounded-full mt-1" />
+            <div className="w-2 h-2 bg-[#00E5C4] rounded-full mt-1" />
             <span className="text-black">
               {line.split(" ")[0]} <span className="text-gray-400">{line.replace(line.split(" ")[0], "").trim()}</span>
             </span>
