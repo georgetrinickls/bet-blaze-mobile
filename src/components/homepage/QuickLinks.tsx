@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 
 const QuickLinks = () => {
   const sports = [
-    { name: "Boxing", icon: "boxing.svg", path: "/sports/boxing" },
-    { name: "Cricket", icon: "cricket.svg", path: "/sports/cricket" },
-    { name: "Football", icon: "football.svg", path: "public/icons/Streamline/Boxing" },
+    { name: "Football", icon: "football.svg", path: "/sports/football" },
+    { name: "Horseracing", icon: "horseracing.svg", path: "/sports/horse-racing" },
     { name: "Golf", icon: "golf.svg", path: "/sports/golf" },
     { name: "Greyhounds", icon: "greyhounds.svg", path: "/sports/greyhounds" },
-    { name: "Horseracing", icon: "horseracing.svg", path: "/sports/horse-racing" },
+    { name: "Boxing", icon: "boxing.svg", path: "/sports/boxing" },
+    { name: "Cricket", icon: "cricket.svg", path: "/sports/cricket" },
     { name: "Rugby Union", icon: "rugby-union.svg", path: "/sports/rugby-union" },
     { name: "Tennis", icon: "tennis.svg", path: "/sports/tennis" }
   ];
