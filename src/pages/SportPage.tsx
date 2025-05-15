@@ -1,12 +1,18 @@
 
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
-import { FixturesList } from "@/components/bets/FixturesList";
-import { fixtures } from "@/data/fixtures";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { CategoryRail } from "@/components/sports/CategoryRail";
+import { PopularBetBuilders } from "@/components/sports/PopularBetBuilders";
+import { FeaturedMatches } from "@/components/sports/FeaturedMatches";
+import { LeaguesCompetitions } from "@/components/sports/LeaguesCompetitions";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const SportPage = () => {
   const { sport } = useParams<{ sport: string }>();
+  const navigate = useNavigate();
   
   // Format the sport name for display
   const formatSportName = (sportSlug: string) => {
@@ -18,15 +24,35 @@ const SportPage = () => {
 
   const displayName = sport ? formatSportName(sport) : "";
   
-  // In a real app, you would filter fixtures based on the sport
-  // For now, we'll just use all fixtures as a demo
+  const handleBack = () => {
+    navigate(-1);
+  };
   
   return (
     <AppLayout title={displayName}>
-      <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">{displayName}</h1>
-        <FixturesList fixtures={fixtures} />
+      <div className="flex items-center p-4 bg-virginRedNew text-white border-b border-gray-200">
+        <Button variant="ghost" size="icon" className="text-white p-0 mr-2" onClick={handleBack}>
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+        <h1 className="text-xl font-bold flex-1">{displayName}</h1>
       </div>
+      
+      <Tabs defaultValue="popular" className="w-full">
+        <TabsList className="w-full sticky top-[136px] z-30 bg-white rounded-none border-b border-gray-200">
+          <TabsTrigger value="popular" className="flex-1 data-[state=active]:bg-white">Popular</TabsTrigger>
+          <TabsTrigger value="leagues" className="flex-1 data-[state=active]:bg-white">Leagues & Competitions</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="popular" className="mt-0 p-4">
+          <CategoryRail />
+          <PopularBetBuilders />
+          <FeaturedMatches />
+        </TabsContent>
+        
+        <TabsContent value="leagues" className="mt-0 p-4">
+          <LeaguesCompetitions />
+        </TabsContent>
+      </Tabs>
     </AppLayout>
   );
 };
