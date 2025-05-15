@@ -9,7 +9,6 @@ import { fixtures } from "@/data/fixtures";
 
 const HomePage = () => {
   return (
-    <AppLayout title="Home">
       <div className="p-4 space-y-6">
         {/* Promo Banner Carousel */}
         <ImageCarousel />
