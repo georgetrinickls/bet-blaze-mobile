@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { AppLayout } from "@/components/layout/AppLayout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CategoryRail } from "@/components/sports/CategoryRail";
 import { PopularBetBuilders } from "@/components/sports/PopularBetBuilders";
