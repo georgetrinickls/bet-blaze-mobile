@@ -1,8 +1,19 @@
+
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BalanceButton: React.FC = () => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    navigate('/account');
+  };
+  
   return (
-    <div className="flex items-center rounded-full bg-white border border-gray-300 pl-3 pr-1 py-1 space-x-2 w-fit shadow-sm">
+    <div 
+      onClick={handleClick}
+      className="flex items-center rounded-full bg-white border border-gray-300 pl-3 pr-1 py-1 space-x-2 w-fit shadow-sm cursor-pointer hover:bg-gray-100 transition-colors"
+    >
       <span className="text-sm font-semibold text-black">£125.99</span>
       <div className="w-6 h-6 rounded-full flex items-center justify-center">
         <svg
