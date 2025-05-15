@@ -16,6 +16,8 @@ export interface Bet {
 }
 
 export interface Match {
+  id?: string;
+  sport?: string;
   homeTeam: string;
   awayTeam: string;
   time: string;

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { MatchCard } from "@/components/football/MatchCard";
@@ -27,7 +28,7 @@ const MatchesList = ({ fixtures }: MatchesListProps) => {
 
   return (
     <>
-      <h2 className="font-bold text-lg mb-4">Today's Matches</h2>
+      <h2 className="font-bold text-lg mb-6">Today's Matches</h2>
 
       {/* Pill Rail */}
       <div className="overflow-x-auto pb-2 no-scrollbar text-left">
@@ -61,7 +62,17 @@ const MatchesList = ({ fixtures }: MatchesListProps) => {
         {fixtures
           .filter((match) => match.sport === activeFilter)
           .map((match) => (
-            <MatchCard key={match.id} match={match} />
+            <MatchCard
+              key={match.id || `${match.homeTeam}-${match.awayTeam}`}
+              homeTeam={match.homeTeam}
+              awayTeam={match.awayTeam}
+              time={match.time}
+              date={match.date}
+              broadcast={match.broadcast}
+              homeOdds={match.homeOdds}
+              drawOdds={match.drawOdds}
+              awayOdds={match.awayOdds}
+            />
           ))}
       </div>
     </>

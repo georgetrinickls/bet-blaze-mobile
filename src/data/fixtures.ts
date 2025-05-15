@@ -3,6 +3,8 @@ import { Match } from "@/types/bet";
 
 export const fixtures: Match[] = [
   {
+    id: "match-1",
+    sport: "Football",
     homeTeam: "Bodø/Glimt",
     awayTeam: "Tottenham",
     time: "17:45",
@@ -13,6 +15,8 @@ export const fixtures: Match[] = [
     awayOdds: "31/20",
   },
   {
+    id: "match-2",
+    sport: "Football",
     homeTeam: "Man United",
     awayTeam: "Athletic Bilbao",
     time: "20:00",
@@ -23,6 +27,8 @@ export const fixtures: Match[] = [
     awayOdds: "14/5",
   },
   {
+    id: "match-3",
+    sport: "Football",
     homeTeam: "Real Madrid",
     awayTeam: "Napoli",
     time: "20:00",
@@ -33,6 +39,8 @@ export const fixtures: Match[] = [
     awayOdds: "23/10",
   },
   {
+    id: "match-4",
+    sport: "Football",
     homeTeam: "Celtic",
     awayTeam: "Lazio",
     time: "20:00",
@@ -43,6 +51,8 @@ export const fixtures: Match[] = [
     awayOdds: "5/4",
   },
   {
+    id: "match-5",
+    sport: "Football",
     homeTeam: "Bayern",
     awayTeam: "Arsenal",
     time: "20:00",
@@ -53,6 +63,8 @@ export const fixtures: Match[] = [
     awayOdds: "3/1",
   },
   {
+    id: "match-6",
+    sport: "Football",
     homeTeam: "Roma",
     awayTeam: "Marseille",
     time: "17:45",
