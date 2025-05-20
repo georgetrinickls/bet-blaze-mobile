@@ -1,4 +1,6 @@
+
 import React from "react";
+import { useBetSlip } from "@/context/BetSlipContext";
 
 interface PriceBoostProps {
   match: string;
@@ -15,6 +17,23 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
   newOdds,
   bets,
 }) => {
+  // Add bet slip context
+  const { toggleSelectionInBetSlip, isSelectionInBetslip } = useBetSlip();
+
+  // Create a unique ID for this price boost
+  const boostId = `boost-${match}-${newOdds}`.replace(/\s+/g, '-');
+  
+  // Create a display string for the bet slip
+  const displayText = selections.join(" & ");
+  
+  // Check if this selection is in the bet slip
+  const isSelected = isSelectionInBetslip(boostId);
+
+  // Handle click on the odds button
+  const handleOddsClick = () => {
+    toggleSelectionInBetSlip(boostId, displayText, match, newOdds);
+  };
+
   return (
     <div className="w-[320px] p-3 rounded-xl shadow border border-gray-200 bg-white space-y-4 flex-shrink-0">
       {/* PRICE BOOST Banner */}
@@ -44,8 +63,11 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
         ))}
       </div>
 
-      {/* Odds Box */}
-      <div className="border border-gray-300 rounded-lg px-4 py-2 flex justify-center items-center space-x-2 text-sm font-semibold">
+      {/* Odds Box - Now interactive */}
+      <button 
+        className={`w-full border ${isSelected ? 'border-virginRed bg-virginRed/5' : 'border-gray-300'} rounded-lg px-4 py-2 flex justify-center items-center space-x-2 text-sm font-semibold transition-colors hover:bg-gray-50 active:bg-gray-100`}
+        onClick={handleOddsClick}
+      >
         <span className="line-through text-gray-400">{oldOdds}</span>
         <span className="text-[#000000] font-bold">{newOdds}</span>
         <img
@@ -53,7 +75,7 @@ const PriceBoost: React.FC<PriceBoostProps> = ({
           alt="Boost Up"
           className="w-4 h-4"
         />
-      </div>
+      </button>
     </div>
   );
 };
