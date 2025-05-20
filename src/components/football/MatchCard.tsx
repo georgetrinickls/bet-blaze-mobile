@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GripHorizontal, Clock, ChevronRight } from "lucide-react";
 import { useBetSlip } from "@/context/BetSlipContext";
+
 interface MatchProps {
   homeTeam: string;
   awayTeam: string;
@@ -14,6 +15,7 @@ interface MatchProps {
   awayOdds: string;
   onViewMore?: () => void;
 }
+
 export const MatchCard: React.FC<MatchProps> = ({
   homeTeam,
   awayTeam,
@@ -29,17 +31,27 @@ export const MatchCard: React.FC<MatchProps> = ({
     toggleSelectionInBetSlip,
     isSelectionInBetslip
   } = useBetSlip();
+
   const handleOddsClick = (type: string, odds: string) => {
-    const selectionId = `${homeTeam} vs ${awayTeam} - ${type} - ${odds}`;
-    const selectionText = type === "home" ? `${homeTeam} to Win @ ${odds}` : type === "draw" ? `${homeTeam} vs ${awayTeam} to Draw @ ${odds}` : `${awayTeam} to Win @ ${odds}`;
-    toggleSelectionInBetSlip(selectionId, selectionText);
+    const matchName = `${homeTeam} vs ${awayTeam}`;
+    const selectionId = `${matchName} - ${type} - ${odds}`;
+    const selectionText = type === "home" 
+      ? `${homeTeam} to Win` 
+      : type === "draw" 
+        ? `Draw` 
+        : `${awayTeam} to Win`;
+    
+    toggleSelectionInBetSlip(selectionId, selectionText, matchName, odds);
   };
+
   const homeSelectionId = `${homeTeam} vs ${awayTeam} - home - ${homeOdds}`;
   const drawSelectionId = `${homeTeam} vs ${awayTeam} - draw - ${drawOdds}`;
   const awaySelectionId = `${homeTeam} vs ${awayTeam} - away - ${awayOdds}`;
+
   const isHomeSelected = isSelectionInBetslip(homeSelectionId);
   const isDrawSelected = isSelectionInBetslip(drawSelectionId);
   const isAwaySelected = isSelectionInBetslip(awaySelectionId);
+
   return <Card className="mb-3">
       <CardContent className="p-3">
         <div className="flex items-center justify-between mb-2">
