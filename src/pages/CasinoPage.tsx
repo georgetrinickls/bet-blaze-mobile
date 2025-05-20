@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CasinoCarousel from "@/components/ui/ImageCarousel";
 import GameCard from "@/components/ui/GameCard";
 import { casinoGames, filterGamesByType } from "@/data/gameData";
-import { CirclePlay, Dice, PlaySquare } from "lucide-react";
+import { CirclePlay, Dices, PlaySquare } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 
 const CasinoPage = () => {
@@ -53,7 +53,7 @@ const CasinoPage = () => {
               <p className="text-xs font-medium">Slots</p>
             </Card>
             <Card className="flex flex-col items-center justify-center py-4 cursor-pointer hover:bg-gray-50">
-              <Dice className="w-8 h-8 mb-2 text-virginRed" />
+              <Dices className="w-8 h-8 mb-2 text-virginRed" />
               <p className="text-xs font-medium">Table Games</p>
             </Card>
             <Card className="flex flex-col items-center justify-center py-4 cursor-pointer hover:bg-gray-50">
