@@ -48,7 +48,7 @@ export const BetSlipProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [accaStake, setAccaStake] = useState<number>(0);
 
   const addToBetSlip = (bet: any) => {
-    setBets((prevBets) => [...prevBets, bet]);
+    setBetslip((prevBets) => [...prevBets, bet]);
     setBetCount((prevCount) => prevCount + 1);
   };
 

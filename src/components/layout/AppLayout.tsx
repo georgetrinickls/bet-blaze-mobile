@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BottomNav } from "@/components/navigation/BottomNav";
 import { useLocation, Link } from "react-router-dom";
@@ -7,9 +8,11 @@ import BalanceIcon from "@/components/ui/BalanceIcon";
 interface AppLayoutProps {
   children: React.ReactNode;
   hideHeader?: boolean;
+  title?: string;
+  hideTitle?: boolean;
 }
 
-export function AppLayout({ children, hideHeader }: AppLayoutProps) {
+export function AppLayout({ children, hideHeader, title, hideTitle }: AppLayoutProps) {
   const location = useLocation();
 
   const isMyBetsPage = location.pathname.startsWith("/my-bets");
