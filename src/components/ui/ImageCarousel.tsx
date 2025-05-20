@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'swiper/css/pagination';
 
 const ImageCarousel: React.FC = () => {
   const images = [
@@ -23,7 +25,7 @@ const ImageCarousel: React.FC = () => {
   return (
     <div className="w-full flex justify-center overflow-hidden">
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay, Pagination]}
         spaceBetween={20}
         slidesPerView={1.2}
         centeredSlides={true}
