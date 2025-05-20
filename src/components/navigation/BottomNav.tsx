@@ -6,6 +6,7 @@ import { Home, Search, FileText, Diamond, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBetSlip } from "@/context/BetSlipContext";
 import { Badge } from "@/components/ui/badge";
+import BetSlipSheet from "@/components/betslip/BetSlipSheet";
 
 export type TabItem = {
   name: string;
@@ -58,6 +59,52 @@ export function BottomNav() {
           const isBetSlip = tab.path === "/bet-slip";
           const showBadge = isBetSlip && betCount > 0;
 
+          const tabContent = (
+            <div className={cn(
+              "relative z-10 flex flex-col items-center justify-center",
+              isActive ? "text-white" : ""
+            )}>
+              <tab.icon
+                className={cn(
+                  "h-5 w-5 mb-1",
+                  isActive ? "text-white" : "text-gray-600"
+                )}
+              />
+              <span className="text-xs font-medium">{tab.name}</span>
+              {showBadge && (
+                <Badge 
+                  className="absolute -top-2 -right-3 bg-virginRed text-white text-xs min-w-5 h-5 flex items-center justify-center rounded-full p-0"
+                >
+                  {betCount}
+                </Badge>
+              )}
+            </div>
+          );
+
+          if (isBetSlip) {
+            return (
+              <BetSlipSheet key={tab.name}>
+                <div
+                  className={cn(
+                    "flex flex-col items-center justify-center transition-colors relative",
+                    isActive
+                      ? "text-white"
+                      : "text-gray-600 hover:text-virginRed"
+                  )}
+                >
+                  {isActive && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div 
+                        className="bg-[#303F6B] rounded-full w-16 h-12 flex items-center justify-center"
+                      ></div>
+                    </div>
+                  )}
+                  {tabContent}
+                </div>
+              </BetSlipSheet>
+            );
+          }
+
           return (
             <Link
               key={tab.name}
@@ -69,13 +116,6 @@ export function BottomNav() {
                   : "text-gray-600 hover:text-virginRed"
               )}
             >
-              {showBadge && (
-                <Badge 
-                  className="absolute -top-1 -right-1 bg-virginRed text-white text-xs min-w-5 h-5 flex items-center justify-center rounded-full p-0"
-                >
-                  {betCount}
-                </Badge>
-              )}
               {isActive && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div 
@@ -83,18 +123,7 @@ export function BottomNav() {
                   ></div>
                 </div>
               )}
-              <div className={cn(
-                "relative z-10 flex flex-col items-center justify-center",
-                isActive ? "text-white" : ""
-              )}>
-                <tab.icon
-                  className={cn(
-                    "h-5 w-5 mb-1",
-                    isActive ? "text-white" : "text-gray-600"
-                  )}
-                />
-                <span className="text-xs font-medium">{tab.name}</span>
-              </div>
+              {tabContent}
             </Link>
           );
         })}
