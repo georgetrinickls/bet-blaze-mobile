@@ -15,24 +15,24 @@ export const casinoLobbyData = {
         },
         { 
           id: "2",
-          name: "Lightning Roulette",
-          image: "https://www.virginbet.com/about-us/vblightningrouletteGENERIC-57511.jpg",
+          name: "Auto Roulette",
+          image: "https://www.virginbet.com/casino-images/auto-roulette-333.jpg",
           isNew: false,
-          isPopular: true
+          isPopular: false
         },
         { 
           id: "3",
-          name: "Auto Roulette",
-          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+          name: "American Roulette",
+          image: "https://www.virginbet.com/casino-images/AmericanRoulette333-65427.png",
           isNew: true,
           isPopular: false
         },
         { 
           id: "4",
-          name: "European Roulette",
-          image: "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=800&q=80",
+          name: "Live Boliver Roulette",
+          image: "https://www.virginbet.com/casino-images/vblboliveroulette-52415.png",
           isNew: false,
-          isPopular: false
+          isPopular: true
         }
       ]
     },
@@ -42,31 +42,45 @@ export const casinoLobbyData = {
       games: [
         { 
           id: "5",
-          name: "Starburst",
-          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+          name: "Wolf Gold",
+          image: "https://www.virginbet.com/casino-images/Wolf-Gold-28689.png",
           isNew: false,
           isPopular: true
         },
         { 
           id: "6",
-          name: "Gonzo's Quest",
-          image: "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800&q=80",
+          name: "9 Pots of Gold",
+          image: "https://www.virginbet.com/casino-images/play-9-pots-of-gold-240.png",
           isNew: false,
           isPopular: true
         },
         { 
           id: "7",
-          name: "Sweet Bonanza",
-          image: "https://images.unsplash.com/photo-1610295388717-7c72870f9845?w=800&q=80",
+          name: "Search for the Phoenix",
+          image: "https://www.virginbet.com/casino-images/Search-for-the-Phoenix-18229.jpg",
           isNew: true,
           isPopular: false
         },
         { 
           id: "8",
-          name: "Book of Dead",
-          image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?w=800&q=80",
+          name: "Easy Gold",
+          image: "https://www.virginbet.com/casino-images/redtigereasygold240-33118.png",
           isNew: false,
           isPopular: false
+        },
+        { 
+          id: "9",
+          name: "777 Super Strike",
+          image: "https://www.virginbet.com/casino-images/redtiger777superstrike240-35971.png",
+          isNew: false,
+          isPopular: false
+        },
+        { 
+          id: "10",
+          name: "7s Deluxe",
+          image: "https://www.virginbet.com/casino-images/7sDelux240new-34009.png",
+          isNew: false,
+          isPopular: true
         }
       ]
     },
@@ -75,31 +89,24 @@ export const casinoLobbyData = {
       id: "megaways",
       games: [
         { 
-          id: "9",
-          name: "Bonanza Megaways",
-          image: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=800&q=80",
+          id: "11",
+          name: "Big Catch Bass Fishing Megaways",
+          image: "https://www.virginbet.com/casino-images/Big-Catch-Bass-Fishing-Megaways-29037.png",
           isNew: false,
           isPopular: true
         },
         { 
-          id: "10",
-          name: "Fruit Shop Megaways",
-          image: "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800&q=80",
-          isNew: false,
-          isPopular: false
-        },
-        { 
-          id: "11",
-          name: "Buffalo King Megaways",
-          image: "https://images.unsplash.com/photo-1610295388717-7c72870f9845?w=800&q=80",
-          isNew: true,
-          isPopular: false
-        },
-        { 
           id: "12",
-          name: "Big Bass Bonanza Megaways",
-          image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80",
+          name: "Big Money Megaways",
+          image: "https://www.virginbet.com/casino-images/Big-Money-Megaways-34409.png",
           isNew: false,
+          isPopular: false
+        },
+        { 
+          id: "13",
+          name: "Chilli Picante Megaways",
+          image: "https://www.virginbet.com/casino-images/ChilliPicanteMegaways-18800.jpg",
+          isNew: true,
           isPopular: true
         }
       ]
@@ -109,30 +116,30 @@ export const casinoLobbyData = {
       id: "jackpot-king",
       games: [
         { 
-          id: "13",
-          name: "Fishin' Frenzy Jackpot King",
-          image: "https://images.unsplash.com/photo-1634501980455-9808d58e3c83?w=800&q=80",
+          id: "14",
+          name: "7s Deluxe Fire Wheel Jackpot King",
+          image: "https://www.virginbet.com/casino-images/7s-Deluxe-Fire-Wheel-Jackpot-King-39245.png",
           isNew: false,
           isPopular: true
         },
         { 
-          id: "14",
-          name: "Deal or No Deal Jackpot King",
-          image: "https://images.unsplash.com/photo-1608547222657-d900a4f421f8?w=800&q=80",
+          id: "15",
+          name: "7s Deluxe Jackpot King",
+          image: "https://www.virginbet.com/casino-images/7s-Deluxe-Jackpot-King-90053.png",
           isNew: false,
           isPopular: false
         },
         { 
-          id: "15",
-          name: "Paddy Power Gold Jackpot King",
-          image: "https://images.unsplash.com/photo-1631384352886-49599b16d378?w=800&q=80",
+          id: "16",
+          name: "Bankin More Bacon Jackpot King",
+          image: "https://www.virginbet.com/casino-images/Bankin-More-Bacon-Jackpot-King-31259.png",
           isNew: true,
           isPopular: false
         },
         { 
-          id: "16",
-          name: "Eye of Horus Jackpot King",
-          image: "https://images.unsplash.com/photo-1660164467661-8b4598df6cb7?w=800&q=80",
+          id: "17",
+          name: "Cash Strike Jackpot King",
+          image: "https://www.virginbet.com/casino-images/Cash-Strike-Jackpot-King-34902.png",
           isNew: false,
           isPopular: true
         }

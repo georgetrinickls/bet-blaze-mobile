@@ -7,9 +7,12 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
 const CasinoFeaturedCarousel: React.FC = () => {
-  // Using only images that were in the provided JSON
+  // Using images from the provided JSON data
   const images = [
     "https://www.virginbet.com/casino-images/play-evo-roulette-333.jpg",
+    "https://www.virginbet.com/casino-images/auto-roulette-333.jpg",
+    "https://www.virginbet.com/casino-images/AmericanRoulette333-65427.png",
+    "https://www.virginbet.com/casino-images/vblboliveroulette-52415.png"
   ];
 
   return (
