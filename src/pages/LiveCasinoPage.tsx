@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GameCategoryRow from "@/components/casino/GameCategoryRow";
 import { liveCasinoLobbyData } from "@/data/liveCasinoLobbyData";
-import LiveCasinoFeaturedCarousel from "@/components/ui/casino-carousel";
+import ImageCarousel from "@/components/ui/casino-carousel"
 import { toast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
