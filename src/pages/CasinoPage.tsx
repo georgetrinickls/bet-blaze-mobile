@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CirclePlay, Dices, PlaySquare } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
-import CasinoFeaturedCarousel from "@/components/ui/ImageCarousel";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 
 const CasinoPage = () => {
   const handleGameClick = (game: { name: string }) => {
@@ -20,13 +20,10 @@ const CasinoPage = () => {
   };
 
   return (
-    <AppLayout title="Casino">
-      <div className="pb-20">
-        <Card className="mb-4 overflow-hidden">
-          <CardContent className="p-0">
-            <CasinoFeaturedCarousel />
-          </CardContent>
-        </Card>
+     <AppLayout title="">
+      <div className="p-4 space-y-6">
+        {/* Promo Banner Carousel */}
+        <ImageCarousel />
         
         {/* Mapped Category Rows */}
         {casinoLobbyData.categories.map((category) => (
