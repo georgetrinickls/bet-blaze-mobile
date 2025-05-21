@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CirclePlay, Dices, PlaySquare } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
-import CasinoFeaturedCarousel from "@/components/casino/CasinoFeaturedCarousel";
+import CasinoFeaturedCarousel from "@/components/ui/ImageCarousel";
 
 const CasinoPage = () => {
   const handleGameClick = (game: { name: string }) => {
