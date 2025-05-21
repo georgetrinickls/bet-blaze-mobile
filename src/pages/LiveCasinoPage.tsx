@@ -3,131 +3,229 @@ import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import LiveCasinoCarousel from "@/components/ui/ImageCarousel";
-import GameCard from "@/components/ui/GameCard";
-import { liveCasinoGames, filterGamesByType } from "@/data/gameData";
+import GameCategoryRow from "@/components/casino/GameCategoryRow";
+import { liveCasinoLobbyData } from "@/data/liveCasinoLobbyData";
+import LiveCasinoFeaturedCarousel from "@/components/casino/LiveCasinoFeaturedCarousel";
 import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const LiveCasinoPage = () => {
-  const handleGameClick = (gameName: string) => {
+  const handleGameClick = (game: { name: string; }) => {
     toast({
       title: "Live Game Selected",
-      description: `${gameName} would launch here in a real app`,
+      description: `${game.name} would launch here in a real app`,
     });
   };
 
-  // Filter game show type games
-  const gameShows = liveCasinoGames.filter(game => game.type === "Game Show");
-
   return (
     <AppLayout title="Live Casino">
-      <div className="p-4 space-y-6">
+      <div className="pb-20">
         <Card className="mb-4 overflow-hidden">
           <CardContent className="p-0">
-            <LiveCasinoCarousel />
+            <LiveCasinoFeaturedCarousel />
           </CardContent>
         </Card>
         
-        {/* Live Dealer Section */}
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold">Live Dealer</h2>
-            <span className="text-xs text-gray-500">View All</span>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-3">
-            {liveCasinoGames
-              .filter(game => game.type === "Live" && game.isPopular)
-              .slice(0, 4)
-              .map(game => (
-                <GameCard 
-                  key={game.id}
-                  {...game}
-                  onClick={() => handleGameClick(game.name)}
-                />
-              ))}
-          </div>
+        {/* Live Casino Games Categories */}
+        <div className="mb-6">
+          <GameCategoryRow
+            key="live-casino"
+            categoryName="Live Casino Games"
+            games={liveCasinoLobbyData.categories.find(c => c.id === "live-casino")?.games || []}
+            onGameClick={handleGameClick}
+          />
         </div>
         
-        {/* Game Shows Section */}
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold">Game Shows</h2>
-            <span className="text-xs text-gray-500">View All</span>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-3">
-            {gameShows.slice(0, 2).map(game => (
-              <GameCard 
-                key={game.id}
-                {...game}
-                onClick={() => handleGameClick(game.name)}
-              />
-            ))}
-          </div>
+        {/* Roulette Games */}
+        <div className="mb-6">
+          <GameCategoryRow
+            key="roulette"
+            categoryName="Roulette"
+            games={liveCasinoLobbyData.categories.find(c => c.id === "roulette")?.games || []}
+            onGameClick={handleGameClick}
+          />
         </div>
         
         {/* All Live Games with Tabs */}
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid grid-cols-4 mb-4">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="roulette">Roulette</TabsTrigger>
-            <TabsTrigger value="blackjack">Blackjack</TabsTrigger>
-            <TabsTrigger value="gameshow">Game Show</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-2 gap-3">
-              {liveCasinoGames.map(game => (
-                <GameCard 
-                  key={game.id}
-                  {...game}
-                  onClick={() => handleGameClick(game.name)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="roulette" className="mt-0">
-            <div className="grid grid-cols-2 gap-3">
-              {liveCasinoGames
-                .filter(game => game.name.toLowerCase().includes("roulette"))
-                .map(game => (
-                  <GameCard 
-                    key={game.id}
-                    {...game}
-                    onClick={() => handleGameClick(game.name)}
-                  />
-                ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="blackjack" className="mt-0">
-            <div className="grid grid-cols-2 gap-3">
-              {liveCasinoGames
-                .filter(game => game.name.toLowerCase().includes("blackjack"))
-                .map(game => (
-                  <GameCard 
-                    key={game.id}
-                    {...game}
-                    onClick={() => handleGameClick(game.name)}
-                  />
-                ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="gameshow" className="mt-0">
-            <div className="grid grid-cols-2 gap-3">
-              {gameShows.map(game => (
-                <GameCard 
-                  key={game.id}
-                  {...game}
-                  onClick={() => handleGameClick(game.name)}
-                />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        <div className="px-4">
+          <Tabs defaultValue="all" className="w-full">
+            <TabsList className="grid grid-cols-4 mb-4">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="roulette">Roulette</TabsTrigger>
+              <TabsTrigger value="card-games">Card Games</TabsTrigger>
+              <TabsTrigger value="game-shows">Game Shows</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="all" className="mt-0">
+              <div className="grid grid-cols-2 gap-3">
+                {liveCasinoLobbyData.categories
+                  .find(c => c.id === "live-casino")?.games
+                  .map(game => (
+                    <div 
+                      key={game.id}
+                      className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
+                      onClick={() => handleGameClick(game)}
+                    >
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
+                        <img
+                          src={game.image}
+                          alt={game.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </AspectRatio>
+                      
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {game.isNew && (
+                          <Badge className="bg-amber-400 text-black text-xs px-1.5 py-0.5 rounded-sm">
+                            NEW
+                          </Badge>
+                        )}
+                        
+                        {game.isPopular && (
+                          <Badge className="bg-virginRed text-white text-xs px-1.5 py-0.5 rounded-sm">
+                            Popular
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      <div className="p-2 bg-white">
+                        <p className="text-xs font-medium truncate">{game.name}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="roulette" className="mt-0">
+              <div className="grid grid-cols-2 gap-3">
+                {liveCasinoLobbyData.categories
+                  .find(c => c.id === "roulette")?.games
+                  .map(game => (
+                    <div 
+                      key={game.id}
+                      className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
+                      onClick={() => handleGameClick(game)}
+                    >
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
+                        <img
+                          src={game.image}
+                          alt={game.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </AspectRatio>
+                      
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {game.isNew && (
+                          <Badge className="bg-amber-400 text-black text-xs px-1.5 py-0.5 rounded-sm">
+                            NEW
+                          </Badge>
+                        )}
+                        
+                        {game.isPopular && (
+                          <Badge className="bg-virginRed text-white text-xs px-1.5 py-0.5 rounded-sm">
+                            Popular
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      <div className="p-2 bg-white">
+                        <p className="text-xs font-medium truncate">{game.name}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="card-games" className="mt-0">
+              <div className="grid grid-cols-2 gap-3">
+                {liveCasinoLobbyData.categories
+                  .find(c => c.id === "live-casino")?.games
+                  .filter(game => 
+                    game.name.toLowerCase().includes('holdem') || 
+                    game.name.toLowerCase().includes('baccarat')
+                  )
+                  .map(game => (
+                    <div 
+                      key={game.id}
+                      className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
+                      onClick={() => handleGameClick(game)}
+                    >
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
+                        <img
+                          src={game.image}
+                          alt={game.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </AspectRatio>
+                      
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {game.isNew && (
+                          <Badge className="bg-amber-400 text-black text-xs px-1.5 py-0.5 rounded-sm">
+                            NEW
+                          </Badge>
+                        )}
+                        
+                        {game.isPopular && (
+                          <Badge className="bg-virginRed text-white text-xs px-1.5 py-0.5 rounded-sm">
+                            Popular
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      <div className="p-2 bg-white">
+                        <p className="text-xs font-medium truncate">{game.name}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="game-shows" className="mt-0">
+              <div className="grid grid-cols-2 gap-3">
+                {liveCasinoLobbyData.categories
+                  .find(c => c.id === "live-casino")?.games
+                  .filter(game => 
+                    game.name.toLowerCase().includes('crazy') || 
+                    game.name.toLowerCase().includes('crash')
+                  )
+                  .map(game => (
+                    <div 
+                      key={game.id}
+                      className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
+                      onClick={() => handleGameClick(game)}
+                    >
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
+                        <img
+                          src={game.image}
+                          alt={game.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </AspectRatio>
+                      
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {game.isNew && (
+                          <Badge className="bg-amber-400 text-black text-xs px-1.5 py-0.5 rounded-sm">
+                            NEW
+                          </Badge>
+                        )}
+                        
+                        {game.isPopular && (
+                          <Badge className="bg-virginRed text-white text-xs px-1.5 py-0.5 rounded-sm">
+                            Popular
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      <div className="p-2 bg-white">
+                        <p className="text-xs font-medium truncate">{game.name}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </AppLayout>
   );
