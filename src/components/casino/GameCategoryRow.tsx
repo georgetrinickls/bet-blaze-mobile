@@ -40,8 +40,8 @@ const GameCategoryRow: React.FC<GameCategoryRowProps> = ({
               onClick={() => onGameClick(game)}
             >
               <div className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                {/* Game image with consistent aspect ratio */}
-                <AspectRatio ratio={3/4} className="bg-gray-100">
+                {/* Game image with 1:1 aspect ratio (square) */}
+                <AspectRatio ratio={1/1} className="bg-gray-100">
                   <img
                     src={game.image}
                     alt={game.name}

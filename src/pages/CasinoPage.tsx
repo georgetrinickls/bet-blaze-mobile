@@ -1,3 +1,4 @@
+
 import React from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -75,7 +76,8 @@ const CasinoPage = () => {
                       className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
                       onClick={() => handleGameClick(game)}
                     >
-                      <AspectRatio ratio={3/4} className="bg-gray-100">
+                      {/* Updated to use 1:1 aspect ratio (square) */}
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
                         <img
                           src={game.image}
                           alt={game.name}
@@ -116,7 +118,8 @@ const CasinoPage = () => {
                       className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
                       onClick={() => handleGameClick(game)}
                     >
-                      <AspectRatio ratio={3/4} className="bg-gray-100">
+                      {/* Updated to use 1:1 aspect ratio (square) */}
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
                         <img
                           src={game.image}
                           alt={game.name}
@@ -156,7 +159,8 @@ const CasinoPage = () => {
                       className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
                       onClick={() => handleGameClick(game)}
                     >
-                      <AspectRatio ratio={3/4} className="bg-gray-100">
+                      {/* Updated to use 1:1 aspect ratio (square) */}
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
                         <img
                           src={game.image}
                           alt={game.name}
@@ -198,7 +202,8 @@ const CasinoPage = () => {
                       className="relative rounded-lg overflow-hidden border border-gray-100 shadow-sm cursor-pointer"
                       onClick={() => handleGameClick(game)}
                     >
-                      <AspectRatio ratio={3/4} className="bg-gray-100">
+                      {/* Updated to use 1:1 aspect ratio (square) */}
+                      <AspectRatio ratio={1/1} className="bg-gray-100">
                         <img
                           src={game.image}
                           alt={game.name}

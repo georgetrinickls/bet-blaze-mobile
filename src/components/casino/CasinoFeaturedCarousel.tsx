@@ -7,14 +7,9 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
 const CasinoFeaturedCarousel: React.FC = () => {
+  // Using only images that were in the provided JSON
   const images = [
-    "https://www.virginbet.com/about-us/VBUK-Gates-Of-Hades-Non-Promo-Banner-55685.jpg",
-    "https://www.virginbet.com/about-us/VBUK-Generic-Banner-Triple-Phoenix-Power-Combo-67516.jpg",
-    "https://www.virginbet.com/about-us/VB-4132-Network-Promotion-Games-Global-Race-2-Riches-21APR-29JUN-60027.jpg",
-    "https://www.virginbet.com/about-us/dfg-55573.jpg",
-    "https://www.virginbet.com/about-us/VBUK-4172-Drop-and-Wins-Slots-2025-Stage-3-30Apr-04June-45899.jpg",
-    "https://www.virginbet.com/about-us/vbcrazytimeGENERIC-71907.jpg",
-    "https://www.virginbet.com/about-us/VBUK-Generic-Virgin-Bet-Pro-Blackjack-63521.jpg"
+    "https://www.virginbet.com/casino-images/play-evo-roulette-333.jpg",
   ];
 
   return (
