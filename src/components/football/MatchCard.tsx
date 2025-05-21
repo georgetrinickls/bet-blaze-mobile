@@ -1,10 +1,13 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GripHorizontal, Clock, ChevronRight } from "lucide-react";
 import { useBetSlip } from "@/context/BetSlipContext";
+import { useNavigate } from "react-router-dom";
 
 interface MatchProps {
+  id?: string;
   homeTeam: string;
   awayTeam: string;
   time: string;
@@ -17,6 +20,7 @@ interface MatchProps {
 }
 
 export const MatchCard: React.FC<MatchProps> = ({
+  id,
   homeTeam,
   awayTeam,
   time,
@@ -27,6 +31,7 @@ export const MatchCard: React.FC<MatchProps> = ({
   awayOdds,
   onViewMore
 }) => {
+  const navigate = useNavigate();
   const {
     toggleSelectionInBetSlip,
     isSelectionInBetslip
@@ -42,6 +47,14 @@ export const MatchCard: React.FC<MatchProps> = ({
         : `${awayTeam} to Win`;
     
     toggleSelectionInBetSlip(selectionId, selectionText, matchName, odds);
+  };
+
+  const handleViewMore = () => {
+    if (onViewMore) {
+      onViewMore();
+    } else if (id) {
+      navigate(`/fixture/${id}`);
+    }
   };
 
   const homeSelectionId = `${homeTeam} vs ${awayTeam} - home - ${homeOdds}`;
@@ -71,7 +84,7 @@ export const MatchCard: React.FC<MatchProps> = ({
         
         <div className="flex justify-between items-center mb-3">
           <p className="text-sm font-medium">{homeTeam} vs {awayTeam}</p>
-          <Button variant="ghost" size="sm" className="h-6 w-6 p-0" onClick={onViewMore} aria-label="View more match details">
+          <Button variant="ghost" size="sm" className="h-6 w-6 p-0" onClick={handleViewMore} aria-label="View more match details">
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>

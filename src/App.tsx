@@ -19,6 +19,7 @@ import BonusesPage from "./pages/BonusesPage";
 import SportPage from "./pages/SportPage";
 import AccountPage from "./pages/AccountPage";
 import NotFound from "./pages/NotFound";
+import FixtureDetailPage from "./pages/FixtureDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/my-bets/history" element={<HistoryPage />} />
             <Route path="/my-bets/bonuses" element={<BonusesPage />} />
             <Route path="/sports/:sport" element={<SportPage />} />
+            <Route path="/fixture/:fixtureId" element={<FixtureDetailPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
